@@ -48,9 +48,58 @@
             <div class="row">
               <div class="span4">
                 <button class="btn btn-primary pull-left"
-                        type="button"><i class="icon-plus
-                                                icon-white"></i> Add an entry
+                        type="button" data-toggle="modal"
+                        data-target="#myModal"><i class="icon-plus
+                                                         icon-white"></i> Add an entry
                 </button>
+                <!--- Add an entry Modal --->
+                <div class="modal fade hide" id="myModal" tabindex="-1" role="dialog"
+                     aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 id="myModalLabel">My Entry</h3>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <img src="http://placehold.it/290x300" alt="">
+                      <label>Add text</label>
+                      <textarea rows="3" placeholder="What placeholder
+                      text should be added here"></textarea>
+                      <label>Add color</label>
+                      <label class="radio inline">
+                        <input type="radio" name="optionsRadios" value="option1" checked>
+                        green
+                      </label>
+                      <label class="radio inline">
+                        <input type="radio" name="optionsRadios" value="option2">
+                        yellow
+                      </label>
+                      <label class="radio inline">
+                        <input type="radio" name="optionsRadios" value="option2">
+                        red
+                      </label>
+                      <label class="radio inline">
+                        <input type="radio" name="optionsRadios" value="option2">
+                        purple
+                      </label>
+                      <label class="radio inline">
+                        <input type="radio" name="optionsRadios" value="option2">
+                        black
+                      </label>
+                      <label>Tag entry</label>
+                      <input type="text" placeholder="Text input">
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <form class="pull-left">
+                    <label class="checkbox">
+                      <input type="checkbox"> Keep it to myself
+                    </label>
+                    </form>
+
+                    <button type="submit" class="btn">Log it!</button>
+                  </div>
+                </div>
               </div>
               <div class="span5">
                 <ul class="nav">
@@ -153,7 +202,7 @@
                 </tr>
                 <tr>
                   <td>
-                    <p><small>Very nice, that looks nice. Very clean lines. And
+                    <p><small>Very nice, that tattoo looks nice. Very clean lines. And
                       congrats on becoming pro-active with your life :)
                      </small></p>
                     <a href="#"><i class="icon-user"></i> <small>HallowedBeTheySlave</small></a></td>
