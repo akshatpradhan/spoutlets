@@ -4730,15 +4730,15 @@ a.badge:hover {
   line-height: 30px;
   color: inherit;
 }
-.container > header .logo {
-  float: left;
-  margin-left: 20px;
-  width: 300px;
-  display: block;
-  width: 160px;
-  height: 30px;
-  margin-top: 10px;
-  text-indent: -9999px;
+/**
+ * Grid item text
+ */
+/*
+#tiles p {
+    font-size: 12px;
+}*/
+.thumbnail .p {
+  font-size: 10px;
 }
 .pull-right {
   float: right;
