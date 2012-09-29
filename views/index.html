@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Spoutlets &mdash; Main Page</title>
+    <title>Spoutlets &mdash; vent your feelings</title>
     <meta name="viewport" content="width=device-width,
                                    initial-scale=1.0,
                                    maximum-scale=1.0,
@@ -19,19 +19,26 @@
             <div class="row">
               <div class="span2 offset5">
                   <a href="index.html"
-                     class="brand"><strong>Spoutlets</strong>.com</a>
+                     class="brand"><strong>Spoutlets</strong></a>
               </div>
               <div class="span3 offset2">
+
                 <ul class="nav pull-right">
-
-                  <li class="divider-vertical"><a href="#"><i class="icon-white
-                                                                     icon-bookmark"></i></a></li>
-                  <li class="dropdown"><a class="dropdown-toggle"
-                                          data-toggle="dropdown"
-                                          href="#"><i class="icon-user
-                                                             icon-white"></i>
-                      greatbillsofire<b class="caret"></b></a></li>
-
+                  <li><a href="#"><i class="icon-white
+                                            icon-bookmark"></i></a></li>
+                  <li class="divider-vertical"></li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle"
+                       data-toggle="dropdown"><i class="icon-user
+                                                        icon-white"></i>
+                      greatbillsofire <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Profile</a></li>
+                      <li><a href="#">Settings</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#">Logout</a></li>
+                    </ul>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -43,14 +50,24 @@
       <div class="navbar navbar-static-top">
         <div class="navbar-inner">
           <div class="container">
+            <!-- Top Bar -->
             <div class="row">
-              <div class="span2">
-                <button class="btn btn-primary pull-left"
+              <!-- Breadcrumbs -->
+              <div class="span4 offset4">
+                <!-- FIXME needs css override -->
+                <ul class="breadcrumb" style="margin-bottom:0;">
+                  <li class="active">Everybody's entries</li>
+                </ul> 
+              </div> <!-- end of Breadcrumbs -->
+              <!-- Add an Entry -->
+              <div class="span4">
+                <!-- Button -->
+                <button class="btn btn-primary pull-right"
                         type="button" data-toggle="modal"
                         data-target="#myModal"><i class="icon-plus
                                                          icon-white"></i> Add an entry
-                </button>
-                <!--- Add an entry Modal --->
+                </button> <!-- end of Button -->
+                <!--- Modal --->
                 <div class="modal fade hide" id="myModal" tabindex="-1" role="dialog"
                      aria-labelledby="myModalLabel"
                      aria-hidden="true">
@@ -96,38 +113,11 @@
                         <input type="checkbox"> Keep it to myself
                       </label>
                     </form>
-
                     <button type="submit" class="btn">Log it!</button>
                   </div>
-                </div>
-              </div>
-              <div class="span5 offset2">
-                <ul class="nav">
-                  <li class="active"><a href="#">Everyone</a></li>
-                  <li class="divider-vertical"><a href="#">Peers you
-                      follow</a></li>
-                  <li class="dropdown"><a class="dropdown-toggle"
-                                          data-toggle="dropdown"
-                                          href="#">Mood
-                      colors<b class="caret"></b></a>
-                    <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu">
-                      <li><a tabindex="-1" href="#">white</a></li>
-                      <li><a tabindex="-1" href="#">grey</a></li>
-                      <li><a tabindex="-1" href="#">black</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-              <div class="span3">
-                <ul class="nav span3">
-                  <form class="navbar-search pull-right">
-                    <input type="text" class="search-query
-                                              input-medium"
-                           placeholder="e.g. anxiety">
-                  </form>
-                </ul>
-              </div>
-            </div>
+                </div> <!-- end of Modal -->
+              </div> <!-- end of Add a Modal -->
+            </div> <!-- end of Top Bar -->
           </div>
         </div>
       </div>
@@ -143,13 +133,12 @@
             <span class="caption"> <small>shared
                 by <a href="acti0nman.html"><i class="icon-user"></i>
                   acti0nman</a></small></span>
-            <!-- Need to fix this block  -->
             <div class="row caption">
-              <span class="span2">
-                <small>3 been there</small>
+              <span class="span2 muted">
+                <small>2 comments</small>
               </span>
-              <span class="span1">
-                <small>5 views</small>
+              <span class="span1 muted">
+                <small>4 views</small>
               </span>
             </div>
             <table class="table table-striped caption">
@@ -182,9 +171,17 @@
                 of what my anxiety looks like and make fun of the
                 drawing. What are some things you do to help with your
                 anxiety?</small></p>
-            <p class="caption"> <small>shared
+            <span class="caption"> <small>shared
                 by <a href="#"><i class="icon-user"></i>
-                  tarotblades</a></small></p>
+                  tarotblades</a></small></span>
+            <div class="row caption">
+              <span class="span2 muted">
+                <small>5 comments</small>
+              </span>
+              <span class="span1 muted">
+                <small>10 views</small>
+              </span>
+            </div>
             <table class="table table-striped caption">
               <tbody>
                 <tr>
@@ -247,9 +244,17 @@
                 through, including the waiting which was BY FAR the worst
                 bit, just proves to myself that I can actually do
                 something like this.</small></p>
-            <p class="caption"> <small>shared
+            <span class="caption"> <small>shared
                 by <a href="#"><i class="icon-user"></i>
-                  anxiousrabbittoid</a></small></p>
+                  anxiousrabbittoid</a></small></span>
+            <div class="row caption">
+              <span class="span2 muted">
+                <small>9 comments</small>
+              </span>
+              <span class="span1 muted">
+                <small>15 views</small>
+              </span>
+            </div>
             <table class="table table-striped caption">
               <tbody>
                 <tr>
@@ -274,7 +279,7 @@
                     <a href="#"><i class="icon-user"></i> <small>Studenteternal</small></a></td>
                 </tr>
                 <tr>
-                  <td><a href="#"><small>all 7
+                  <td><a href="#"><small>all 9
                         comments</small></a></td>
                 </tr>
                 <tr>
