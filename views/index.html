@@ -43,14 +43,23 @@
       <div class="navbar navbar-static-top">
         <div class="navbar-inner">
           <div class="container">
+            <!-- Top Bar -->
             <div class="row">
-              <div class="span2">
-                <button class="btn btn-primary pull-left"
+              <!-- Breadcrumbs -->
+              <div class="span9">
+                <ul class="nav">
+                  <li class="active"><a href="#">Everyone</a></li>
+                </ul> 
+              </div> <!-- end of Breadcrumbs -->
+              <!-- Add an Entry -->
+              <div class="span3">
+                <!-- Button -->
+                <button class="btn btn-primary pull-right"
                         type="button" data-toggle="modal"
                         data-target="#myModal"><i class="icon-plus
                                                          icon-white"></i> Add an entry
-                </button>
-                <!--- Add an entry Modal --->
+                </button> <!-- end of Button -->
+                <!--- Modal --->
                 <div class="modal fade hide" id="myModal" tabindex="-1" role="dialog"
                      aria-labelledby="myModalLabel"
                      aria-hidden="true">
@@ -96,26 +105,11 @@
                         <input type="checkbox"> Keep it to myself
                       </label>
                     </form>
-
                     <button type="submit" class="btn">Log it!</button>
                   </div>
-                </div>
-              </div>
-              <div class="span5 offset2">
-                <ul class="nav">
-                  <li class="active"><a href="#">Everyone</a></li>
-                </ul>
-              </div>
-              <div class="span3">
-                <ul class="nav span3">
-                  <form class="navbar-search pull-right">
-                    <input type="text" class="search-query
-                                              input-medium"
-                           placeholder="e.g. anxiety">
-                  </form>
-                </ul>
-              </div>
-            </div>
+                </div> <!-- end of Modal -->
+              </div> <!-- end of Add a Modal -->
+            </div> <!-- end of Top Bar -->
           </div>
         </div>
       </div>
