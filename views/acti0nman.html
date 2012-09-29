@@ -2,13 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Spoutlets &mdash; Main Page</title>
+    <title>acti0nman's profile &mdash; Spoutlets</title>
     <meta name="viewport" content="width=device-width,
                                    initial-scale=1.0,
                                    maximum-scale=1.0,
-                                   user-scalable-no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+                                   user-scalable-no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
     <link rel="stylesheet" type="text/css" href="../public/stylesheets/bootstrap.css">
   </head>
   <body>
@@ -19,19 +19,25 @@
             <div class="row">
               <div class="span2 offset5">
                   <a href="index.html"
-                     class="brand"><strong>Spoutlets</strong>.com</a>
+                     class="brand"><strong>Spoutlets</strong></a>
               </div>
               <div class="span3 offset2">
                 <ul class="nav pull-right">
-
-                  <li class="divider-vertical"><a href="#"><i class="icon-white
-                                                                     icon-bookmark"></i></a></li>
-                  <li class="dropdown"><a class="dropdown-toggle"
-                                          data-toggle="dropdown"
-                                          href="#"><i class="icon-user
-                                                             icon-white"></i>
-                      greatbillsofire<b class="caret"></b></a></li>
-
+                  <li><a href="#"><i class="icon-white
+                                            icon-bookmark"></i></a></li>
+                  <li class="divider-vertical"></li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle"
+                       data-toggle="dropdown"><i class="icon-user
+                                                        icon-white"></i>
+                      greatbillsofire <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Profile</a></li>
+                      <li><a href="#">Settings</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#">Logout</a></li>
+                    </ul>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -43,14 +49,26 @@
       <div class="navbar navbar-static-top">
         <div class="navbar-inner">
           <div class="container">
+            <!-- Top Bar -->
             <div class="row">
-              <div class="span2">
-                <button class="btn btn-primary pull-left"
+              <!-- Breadcrumbs -->
+              <div class="span4 offset4">
+                <!-- FIXME needs css override -->
+                <ul class="breadcrumb" style="margin-bottom:0;">
+                  <li><a href="index.html">Everybody's entries</a>
+                  <span class="divider">/</span></li>
+                  <li class="active"> acti0nman</li>
+                </ul> 
+              </div> <!-- end of Breadcrumbs -->
+              <!-- Add an Entry -->
+              <div class="span4">
+                <!-- Button -->
+                <button class="btn btn-primary pull-right"
                         type="button" data-toggle="modal"
                         data-target="#myModal"><i class="icon-plus
                                                          icon-white"></i> Add an entry
-                </button>
-                <!--- Add an entry Modal --->
+                </button> <!-- end of Button -->
+                <!--- Modal --->
                 <div class="modal fade hide" id="myModal" tabindex="-1" role="dialog"
                      aria-labelledby="myModalLabel"
                      aria-hidden="true">
@@ -96,45 +114,92 @@
                         <input type="checkbox"> Keep it to myself
                       </label>
                     </form>
-
                     <button type="submit" class="btn">Log it!</button>
                   </div>
-                </div>
-              </div>
-              <div class="span5 offset2">
-                <ul class="nav">
-                  <li><a href="index.html">Everyone</a></li>
-                  <li class="active divider-vertical"><a href="#">acti0nman</a></li>
-                </ul>
-              </div>
-              <div class="span3">
-                <ul class="nav span3">
-                  <form class="navbar-search pull-right">
-                    <input type="text" class="search-query
-                                              input-medium"
-                           placeholder="e.g. anxiety">
-                  </form>
-                </ul>
-              </div>
-            </div>
+                </div> <!-- end of Modal -->
+              </div> <!-- end of Add a Modal -->
+            </div> <!-- end of Top Bar -->
           </div>
         </div>
       </div>
     </header>
     <div class="container">
       <div class="row">
-        <div class="span4">
-          <div class="page-header">
-            <h3>acti0nman</h3>
-            
+        <div class="span12">
+          <h4><img src="http://www.placehold.it/32/5593F8" class="img-circle"/> acti0nman</h4>
+        </div>
+      </div>
+      <!-- Timeline section -->
+      <div class="row">
+        <div class="span10">
+	  <div id="my-timeline"></div>
+        </div>
+        <div class="span2">
+          <div class="row">
+            <div class="span2">
+              <p><button type="submit" class="btn btn-mini">Comment</button></p>
+              <i class="icon-arrow-right"></i><a href=""><small> 3 comments</small></a>
+            </div>
           </div>
         </div>
-        <div class="span8">
-          placeholder
+      </div> <!-- end of Timeline section -->
+      <!-- Comment section -->
+      <div class="row">
+        <div class="well span7">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Comments</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <p>I remember, something like that happened to me
+                  before. I was stunned but also relieved.</p>
+
+                  <a href="#"><i class="icon-user"></i> Wichelle</a></td>
+              </tr>
+              <tr>
+                <td>
+                  <p>that sucks, but just hope for the best. Maybe it
+                  will turn around, you never know.</p>
+                  <a href="#"><i class="icon-user"></i> jenniferjuniper</a></td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Things happen for a reason, don't worry about it.</p>
+                  <a href="#"><i class="icon-user"></i> takemeaway</a></td>
+              </tr>
+              <tr>
+                <td>
+                  <p><a href="#"><i class="icon-user"></i> greatbillsofire</a></p>
+                  <textarea class="input-xlarge" rows="6" placeholder="Add a comment..."></textarea>
+                  <p><button type="submit" class="btn">Comment</button></p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-      </div>      
+      </div> <!-- end of Comment section -->
     </div>
     <script src="../public/js/jquery-1.8.1.js"></script>
     <script src="../public/js/bootstrap.js"></script>
+    <!-- BEGIN TimelineJS -->
+    <script type="text/javascript" src="../public/compiled/js/storyjs-embed.js"></script>
+    <script>
+      $(document).ready(function() {
+      createStoryJS({
+      type:		'timeline',
+      width:		'100%',
+      height:		'600',
+      source:		'example_json.json',
+      embed_id:	        'my-timeline',
+      start_at_end:     true,
+      start_zoom_adjust: '3'
+      });
+      });
+    </script>
+    <!-- END TimelineJS -->
   </body>
 </html>
