@@ -74,46 +74,47 @@
                   <div class="modal-header">
                     <button type="button" class="close"
                             data-dismiss="modal" aria-hidden="true">×</button>
-                    <h3 id="myModalLabel">My Entry</h3>
+                    <h3 id="myModalLabel">Jan 13 2013 entry</h3>
                   </div>
                   <div class="modal-body">
                     <form>
-                      <img src="http://placehold.it/290x300" alt="">
-                      <label>Add text</label>
-                      <textarea rows="3" placeholder="What placeholder
-                                                      text should be added here"></textarea>
-                      <label>Add color</label>
+                      <label><h5>Describe what's going on with you</h5></label>
+                      <textarea rows="3" class="span6" placeholder="Write a bit about what happened, something you did, or how you're feeling... "></textarea>
+                      <label><h5>Upload an image capturing your feeling</h5></label>
+                      <input type="file" onchange="if (this.value) {
+                                                   $('#localSpinner').show();
+                                                   filepicker.uploadFile(this, function(data){
+                                                   $('#localResult').text(JSON.stringify(data));
+                                                   $('#localSpinner').hide();
+                                                   });
+                                                   }
+                                                   "/>
+                      <label><h5>What's your mood?</h5></label>
                       <label class="radio inline">
-                        <input type="radio" name="optionsRadios" value="option1" checked>
-                        green
-                      </label>
-                      <label class="radio inline">
-                        <input type="radio" name="optionsRadios" value="option2">
+                        <input type="radio" name="optionRadios" value="yellow">
                         yellow
                       </label>
                       <label class="radio inline">
-                        <input type="radio" name="optionsRadios" value="option2">
-                        red
+                        <input type="radio" name="optionRadios" value="green">
+                        green
                       </label>
                       <label class="radio inline">
-                        <input type="radio" name="optionsRadios" value="option2">
-                        purple
+                        <input type="radio" name="optionRadio" value="blue">
+                        blue
                       </label>
-                      <label class="radio inline">
-                        <input type="radio" name="optionsRadios" value="option2">
-                        black
-                      </label>
-                      <label>Tag entry</label>
-                      <input type="text" placeholder="Text input">
+
                     </form>
                   </div>
                   <div class="modal-footer">
                     <form class="pull-left">
-                      <label class="checkbox">
+                      <label class="checkbox inline">
                         <input type="checkbox"> Keep it to myself
                       </label>
+                      <label class="checkbox inline">
+                        <input type="checkbox" checked> Open to comments
+                      </label>
                     </form>
-                    <button type="submit" class="btn">Log it!</button>
+                    <button type="submit" class="btn btn-primary">Log it!</button>
                   </div>
                 </div> <!-- end of Modal -->
               </div> <!-- end of Add a Modal -->
