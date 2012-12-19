@@ -1,23 +1,54 @@
-<h1>Listing entries</h1>
+<h3>My Peer Community</h3>
+<p>Connect with others dealing with the same issues</p>
+<div class="row">
+  <div class="span9">
+    <!-- Entry -->
+    <% @entries.each do |entry| %>
+    <div class="well">
+      <div class="row">
+        <div class="span1">
+          <span class="badge badge-info">14</span> <br />
+          <span class="text-info"> been there</span>
+        </div>
+        <div class="span5">
+          <br />
+          <p><small><%= entry.content %></small></p>
+          <ul class="nav nav-list">
+            <li class="divider"></li>
+          </ul>
+        </div>
+        <div class="span1">
+          <br />
+          <span class="muted"><small>12 hours ago</small></span>
+        </div>
+        <div class="span1">
+          <span class="label pull-right">Anxiety</span>
+        </div>
+      </div>
 
-<table>
-  <tr>
-    <th>Content</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @entries.each do |entry| %>
-  <tr>
-    <td><%= entry.content %></td>
-    <td><%= link_to 'Show', entry %></td>
-    <td><%= link_to 'Edit', edit_entry_path(entry) %></td>
-    <td><%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Entry', new_entry_path %>
+      <div class="row">
+        <div class="span4">
+          <p class="muted"><small>shared
+              by <i class="icon-user"></i>
+                anonymous</small></p>
+        </div>
+        <div class="span4">
+          <button class="btn btn-mini pull-right"
+                  type="button"><i class="icon-ok"></i> been there</button>
+        </div>
+      </div>
+    </div>
+    <% end %><!-- end of Entry -->
+  </div>
+  <!-- Common Issues -->
+  <div class="span2">
+    <h4>Common Issues</h4>
+    <span class="label">Anxiety</span>
+    <span class="label">romantic issues</span>
+    <span class="label">room mate</span>
+    <span class="label">sexuality</span>
+    <span class="label">future worries</span>
+    <span class="label">diet</span>
+    <span class="label">feeling lonely</span>
+  </div> <!-- end of Common Issues -->
+</div>
