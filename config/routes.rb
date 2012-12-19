@@ -1,4 +1,7 @@
 Spoutlets::Application.routes.draw do
+  resources :entries
+
+
   root :to => "home#index"
   resources :users, :only => [:index, :show, :edit, :update ]
   match '/auth/:provider/callback' => 'sessions#create'
