@@ -1,4 +1,6 @@
 source :rubygems
+# Mongoid 3 requires Ruby 1.9.3, per:
+# http://mongoid.org/en/mongoid/index.html
 ruby '1.9.3'
 gem 'bundler', '>=1.3.0.pre.2'
 gem 'rake', '10.0.3'
