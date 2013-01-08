@@ -1,5 +1,9 @@
-source 'https://rubygems.org'
+source :rubygems
+ruby '1.9.3'
+gem 'bundler', '>=1.3.0.pre.2'
+gem 'rake', '10.0.3'
 gem 'rails', '3.2.9'
+
 group :assets do
   gem "less-rails", ">= 2.2.6"
   gem 'coffee-rails', '~> 3.2.1'
