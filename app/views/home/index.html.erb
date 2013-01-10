@@ -1,0 +1,5 @@
+<h3>My Peer Community</h3>
+<p>connect with others dealing with the same issues</p>
+<% @users.each do |user| %>
+  <p>User: <%=link_to user.name, user %></p>
+<% end %>
