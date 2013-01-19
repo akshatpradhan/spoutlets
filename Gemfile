@@ -1,7 +1,7 @@
 source :rubygems
+
 # Mongoid 3 requires Ruby 1.9.3, per:
 # http://mongoid.org/en/mongoid/index.html
-
 ruby '1.9.3'
 gem 'bundler', '>=1.3.0.pre.2'
 gem 'rails', '3.2.11'
@@ -27,8 +27,8 @@ group :assets do
 end
 
 group :test, :development do
-# Keep in the development group (also):
-#   Factory girl, if we want to use it in the console.
+# Keep (also) in the development group:
+#   Factory girl, to use in the console.
 #   RSpec, for generators and rake tasks.
   gem 'factory_girl_rails', '>= 4.1.0'
   gem 'rspec-rails', '>= 2.11.4'
