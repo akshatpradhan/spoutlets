@@ -24,13 +24,15 @@ describe EntriesController do
   # Entry. As you add validations to Entry, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    { "content" => "" }
+    { content: '', user_id: User.first }
   end
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # EntriesController. Be sure to keep this updated too.
   def valid_session
+    login_user(User.create!)
+    controller.stub(:current_user).and_return(@user)
     {}
   end
 
