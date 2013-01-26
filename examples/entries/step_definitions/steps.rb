@@ -17,6 +17,10 @@ end
 
 World(LoginSteps)
 
+Given /hoochie/ do
+  print 'hoochie'
+end
+
 Given /^I'm logged in$/ do
   login_some_user
 end

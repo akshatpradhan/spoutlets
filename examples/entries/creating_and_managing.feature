@@ -10,6 +10,8 @@ Feature: Creating and managing entries
 
   Scenario: My entries are listed on the home page
     Given I'm logged in
+
+    And hoochie
     And I have entries titled Pizza, Breadsticks
     When I go to the home page
     Then I should see "Pizza"

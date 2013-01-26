@@ -6,7 +6,7 @@ Feature: Sign up
 
   As a user
   I want to sign up
-  And I want to log in
+  And I want to sign in
   In order to access restricted features
 
   In order to get access to protected sections of the site
@@ -14,7 +14,7 @@ Feature: Sign up
   I want to be able to sign up
 
     Background:
-      Given I am not logged in
+      Given I am not signed in
 
     Scenario: User signs up with valid data
       When I sign up with valid user data
@@ -35,8 +35,3 @@ Feature: Sign up
     Scenario: User signs up with mismatched password and confirmation
       When I sign up with a mismatched password confirmation
       Then I should see a mismatched password message
-
-
-Feature: Unregistered user
-
-
