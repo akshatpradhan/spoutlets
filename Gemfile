@@ -1,16 +1,23 @@
 source :rubygems
 
+# Required (normally) for Rails:
+
 # Mongoid 3 requires Ruby 1.9.3, per:
 # http://mongoid.org/en/mongoid/index.html
 ruby '1.9.3'
+
+# Rails 3.2.11 requires rack ~> 1.4.0.
+gem 'rack',    '~> 1.4.4'
+
 gem 'bundler', '>= 1.3.0.pre.2'
-gem 'rack',    '>= 1.4.4'
+gem 'jquery-rails'
 gem 'rails',   ' = 3.2.11'
 gem 'rake',    '>= 10.0.3'
 
+# (End of required normally for Rails.)
+
 gem 'cancan', '>= 1.6.8'
 gem 'figaro', '>= 0.5.0'
-gem 'jquery-rails'
 gem 'libv8', '>= 3.11.8'
 gem 'mongoid', '>= 3.0.14'
 gem 'omniauth', '>= 1.1.1'
