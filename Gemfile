@@ -3,9 +3,10 @@ source :rubygems
 # Mongoid 3 requires Ruby 1.9.3, per:
 # http://mongoid.org/en/mongoid/index.html
 ruby '1.9.3'
-gem 'bundler', '>=1.3.0.pre.2'
-gem 'rails', '3.2.11'
-gem 'rake', '10.0.3'
+gem 'bundler', '>= 1.3.0.pre.2'
+gem 'rack',    '>= 1.4.4'
+gem 'rails',   ' = 3.2.11'
+gem 'rake',    '>= 10.0.3'
 
 gem 'cancan', '>= 1.6.8'
 gem 'figaro', '>= 0.5.0'
