@@ -15,7 +15,7 @@ Feature: Sign in
     Scenario: User is not signed up
       Given I do not exist as a user
       When I sign in with valid credentials
-      Then I see an invalid signin message
+      Then I see an invalid sign in message
         And I should be signed out
 
     Scenario: User signs in successfully
@@ -30,18 +30,18 @@ Feature: Sign in
       Given I exist as a user
       And I am not signed in
       When I sign in with a wrong email
-      Then I see an invalid signin message
+      Then I see an invalid sign in message
       And I should be signed out
       
     Scenario: User enters wrong password
       Given I exist as a user
       And I am not signed in
       When I sign in with a wrong password
-      Then I see an invalid signin message
+      Then I see an invalid sign in message
       And I should be signed out
 
     Scenario: User is greeted upon signing in
-      Given the user "Aslak" has an account
+      Given the user 'Aslak' has an account
       And he is signed out
       When he signs in
-      Then he should see "Welcome, Aslak"
+      Then he should see 'Welcome, Aslak'
