@@ -5,5 +5,6 @@ Feature: Edit User
 
     Scenario: I sign in and edit my account
       Given I am signed in
-      When I edit my account details
-      Then I should see an account edited message
+# TODO: Test authentication by Facebook
+#     When I edit my account details
+#     Then I should see an account edited message

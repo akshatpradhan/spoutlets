@@ -1,3 +1,5 @@
+# See http://stackoverflow.com/questions/1271788/session-variables-with-cucumber-stories
+
 module SignInSteps
   def create_named_user(name)
     @user = User.create!(name: name)
@@ -5,6 +7,7 @@ module SignInSteps
 
   def sign_in_user(user)
     @user = user
+    session ||= {}
     session[:user_id] = @user.id
   end
 
@@ -13,11 +16,12 @@ module SignInSteps
 # See spec/spec_helper.rb:
     sign_in_user(@user)
   end
-end
 
   def sign_out
+    session ||= {}
     session[:user_id] = nil
   end
+end
 
 World(SignInSteps)
 
@@ -40,8 +44,12 @@ end
 ### UTILITY METHODS ###
 
 def create_visitor
-  @visitor ||= { name: 'Testy McUserton', email: 'example@example.com',
-    password: 'changeme', password_confirmation: 'changeme' }
+  @visitor ||= {
+      name: 'Testy McUserton',
+      email: 'example@example.com',
+#     password: 'changeme',
+#     password_confirmation: 'changeme',
+      }
 end
 
 def find_user
@@ -52,7 +60,7 @@ def create_unconfirmed_user
   create_visitor
   delete_user
   sign_up
-  visit '/users/sign_out'
+  visit '/signout'
 end
 
 def create_user
@@ -68,25 +76,25 @@ end
 
 def sign_up
   delete_user
-  visit '/users/sign_up'
-  fill_in 'user_name',                  with: @visitor[:name    ]
-  fill_in 'user_email',                 with: @visitor[:email   ]
-  fill_in 'user_password',              with: @visitor[:password]
-  fill_in 'user_password_confirmation', with: @visitor[:password_confirmation]
-  click_button 'Sign up'
+  visit '/signin'
+  fill_in 'Name',                       with: @visitor[:name    ]
+  fill_in 'Email',                      with: @visitor[:email   ]
+# fill_in 'user_password',              with: @visitor[:password]
+# fill_in 'user_password_confirmation', with: @visitor[:password_confirmation]
+  click_button 'Sign In'
   find_user
 end
 
 def sign_in
-  visit '/users/sign_in'
-  fill_in 'user_email',    with: @visitor[:email   ]
-  fill_in 'user_password', with: @visitor[:password]
-  click_button 'Sign in'
+  visit '/signin'
+  fill_in 'Name',                       with: @visitor[:name    ]
+  fill_in 'Email',                      with: @visitor[:email   ]
+  click_button 'Sign In'
 end
 
 ### GIVEN ###
 Given /^I am not signed in$/ do
-  visit  '/users/sign_out'
+  visit '/signout'
 end
 
 Given /^I am signed in$/ do
@@ -114,7 +122,7 @@ When /^I sign in with valid credentials$/ do
 end
 
 When        /^I sign out$/ do
-  visit '/users/sign_out'
+  visit '/signout'
 end
 
 When /^I sign up with valid user data$/ do
@@ -160,12 +168,12 @@ When                /^I sign in with a wrong password$/ do
   sign_in
 end
 
-When   /^I edit my account details$/ do
-  click_link 'Edit account'
-  fill_in 'user_name',             with: 'newname'
-  fill_in 'user_current_password', with: @visitor[:password]
-  click_button 'Update'
-end
+#When   /^I edit my account details$/ do
+# click_link 'Edit account'
+# fill_in 'user_name',             with: 'newname'
+# fill_in 'user_current_password', with: @visitor[:password]
+# click_button 'Update'
+#end
 
 When /^I look at the list of users$/ do
   visit '/'
@@ -173,15 +181,15 @@ end
 
 ### THEN ###
 Then              /^I should be signed in$/ do
-  page.should     have_content 'Sign out'
-  page.should_not have_content 'Sign up'
-  page.should_not have_content 'Sign in'
+  page.should     have_content 'Logout'
+  page.should_not have_content 'register'
+  page.should_not have_content 'login'
 end
 
 Then              /^I should be signed out$/ do
-  page.should     have_content 'Sign up'
-  page.should     have_content 'Sign in'
-  page.should_not have_content 'Sign out'
+  page.should     have_content 'register'
+  page.should     have_content 'login'
+  page.should_not have_content 'Logout'
 end
 
 Then                       /^I see an unconfirmed account message$/ do
