@@ -29,7 +29,7 @@ gem 'thin', '>= 1.5.0'
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'less-rails', '>= 2.2.6'
-  gem 'therubyracer', '>= 0.11.0', platform: :ruby, require: 'v8'
+  gem 'therubyracer', '~> 0.11.3', platform: :ruby, require: 'v8'
   gem 'twitter-bootstrap-rails', '>= 2.1.8'
   gem 'uglifier', '>= 1.0.3'
 end
@@ -38,17 +38,17 @@ group :test, :development do
 # Keep (also) in the development group:
 #   Factory girl, to use in the console.
 #   RSpec, for generators and rake tasks.
-  gem 'factory_girl_rails', '>= 4.1.0'
-  gem 'rspec-rails', '>= 2.11.4'
+  gem 'factory_girl_rails', '~> 4.1.0'
+  gem 'rspec-rails', '~> 2.12.2'
 end
 
 group :test do
-  gem 'capybara', '>= 2.0.1'
-  gem 'cucumber-rails', '>= 1.3.0', require: false
-  gem 'database_cleaner', '>= 0.9.1'
-  gem 'email_spec', '>= 1.4.0'
-  gem 'launchy', '>= 2.1.2'
-  gem 'mongoid-rspec', '>= 1.5.5'
+  gem 'capybara', '~> 2.0.2'
+  gem 'cucumber-rails', '~> 1.3.0', require: false
+  gem 'database_cleaner', '~> 0.9.1'
+  gem 'email_spec', '~> 1.4.0'
+  gem 'launchy', '~> 2.1.2'
+  gem 'mongoid-rspec', '~> 1.5.6'
 end
 
 group :development do
