@@ -238,5 +238,5 @@ Then            /^I should see my name$/ do
 end
 
 Then /^(I|he) should see '(.*?)'$/ do |ignore, see|
-  page.should have_content(see)
+  page.should                     have_content(see)
 end
