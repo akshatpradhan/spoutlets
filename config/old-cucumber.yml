@@ -1,0 +1,16 @@
+<%
+ecf = ENV['CUCUMBER_FORMAT']
+s = 'rerun.txt'
+rerun = File.file?(s) ? IO.read(s) : ""
+std_opts   = "-r features/support/ "\
+             "-r features/step_definitions "\
+    "--format #{ecf || 'pretty'  } --strict --tags ~@wip"
+rerun_opts = (rerun.to_s.strip.empty? ?
+    "--format #{ecf || 'progress'} features" :
+    "--format #{ecf || 'pretty'  } #{rerun}")
+%>
+
+wip:                        --wip  features --tags  @wip:3
+default: <%= std_opts %>           features
+rerun: <%= rerun_opts %> \
+    --format rerun --out rerun.txt --strict --tags ~@wip

@@ -1,4 +1,5 @@
 class EntriesController < ApplicationController
+
   # GET /entries
   # GET /entries.json
   def index
@@ -41,6 +42,7 @@ class EntriesController < ApplicationController
   # POST /entries.json
   def create
     @entry = Entry.new(params[:entry])
+    current_user.entries << @entry
 
     respond_to do |format|
       if @entry.save
@@ -80,4 +82,5 @@ class EntriesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end

@@ -7,8 +7,22 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 # Environment variables (ENV['...']) are set in the file config/application.yml.
 # See http://railsapps.github.com/rails-environment-variables.html
-puts 'ROLES'
-YAML.load(ENV['ROLES']).each do |role|
-  Role.mongo_session['roles'].insert({ :name => role })
-  puts 'role: ' << role
+
+#puts 'DEFAULT USERS'
+#user = User.create! :name => ENV['ADMIN_NAME'].dup, :email => ENV['ADMIN_EMAIL'].dup, :password => ENV['ADMIN_PASSWORD'].dup, :password_confirmation => ENV['ADMIN_PASSWORD'].dup
+#puts 'user: ' << user.name
+
+roles = %w[admin user VIP]
+roles.each do |e|
+  Role.mongo_session['roles'].insert({name: e})
+  puts 'role: ' << e
+end
+
+puts 'DEFAULT USERS:'
+%w[admin].each do |e|
+  user = User.create!  name: Figaro.env.send("#{e}_name"    ).dup,
+                      email: Figaro.env.send("#{e}_email"   ).dup,
+                   password: Figaro.env.send("#{e}_password").dup,
+      password_confirmation: Figaro.env.send("#{e}_password").dup
+  puts 'user: ' << user.name
 end

@@ -75,3 +75,9 @@ pickle-email-*.html
 
 # Ignore application configuration
 /config/application.yml
+
+# Ignore local, developer-specific files
+/out/
+/private/
+/local-env
+.env

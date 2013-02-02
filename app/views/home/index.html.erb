@@ -1,5 +1,31 @@
 <h3>My Peer Community</h3>
 <p>connect with others dealing with the same issues</p>
+<p><em>User list:</em></p>
 <% @users.each do |user| %>
   <p>User: <%=link_to user.name, user %></p>
+<% end %>
+<!-- Entry -->
+<% @entries.each do |entry| %>
+  <div class="well">
+    <div class="row">
+      <div class="span1">
+        <span class="badge badge-info">14</span> <br />
+        <span class="text-info"> been there</span>
+      </div>
+      <div class="span5">
+        <br />
+        <p><small><%= entry.content %></small></p>
+        <ul class="nav nav-list">
+          <li class="divider"></li>
+        </ul>
+      </div>
+      <div class="span1">
+        <br />
+        <span class="muted"><small>12 hours ago</small></span>
+      </div>
+      <div class="span1">
+        <span class="label pull-right">Anxiety</span>
+      </div>
+    </div>
+  </div>
 <% end %>
