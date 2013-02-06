@@ -1,28 +1,57 @@
+<%  # %%entry
+      row_attributes = { wrapper_html: { class: 'row'   } }
+    level_attributes = {                 class: 'span2'   }
+    title_attributes = {                 class: 'span4'   }
+%>
+
 <%= simple_form_for(@entry) do |f| %>
-<%= f.error_notification %>
-<div class="row">
-  <div class="span7">
-    <%= f.input :content, as: :text, label: "Give more detail about
-    what you're dealing with", placeholder: "What's your reflection?",
-    input_html: { rows: 7, class: "span6" } %>
+  <%= f.error_notification %>
+
+  <div class='row'>
+    <%= f.input :my_title, {
+            as: :text,
+            input_html: {rows: 1}.merge(title_attributes),
+            label: false,
+            placeholder: 'title (optional)',
+            wrapper_html: title_attributes,
+            } %>
+
+    <%= f.input :share_public, {
+            as: :boolean,
+            label: 'Share on public spoutwall',
+            wrapper_html: {class: 'span5'},
+            } %>
   </div>
 
-  <div class="span5">
-    <%= f.input :happiness, collection: 1..5, label: "Happiness Level" %>
-    <%= f.input :happiness, collection: 1..5, label: "Anxiety Level" %>
-    <%= f.input :happiness, collection: 1..5, label: "Irritation Level" %>
-  </div>
-</div>
+  <%= f.input :my_content, {
+          as: :text,
+          input_html: {rows: 7, class: 'span6'},
+          label: false,
+          placeholder: 'What\'s your reflection?',
+          }.merge(row_attributes) %>
 
-<div class="row">
-  <div class="span8">
-    <%= f.input :tag, label: "Tag your entry to understand what bothers or delights you regularly" %>
+  <div class='row'>
+    <%  %w[happiness  anxiety  irritation].each do |e| %>
+    <%=   f.input e.to_sym, {
+              collection: 1..5,
+              default: 1,
+              input_html:   level_attributes,
+              label:  "#{e.capitalize} Level",
+              wrapper_html: level_attributes,
+              } %>
+    <%  end %>
   </div>
-</div>
-<div class="row">
-  <div class="span3 offset5">
-    <%= f.button :submit %>
-  </div>
-</div>
 
+  <%= f.input :tag, {
+          input_html: {class: 'span8'},
+          label: 'Categorize your entry to understand what '\
+              'bothers or delights you regularly:',
+          placeholder: 'Family',
+          }.merge(row_attributes) %>
+
+  <%= f.button :submit, {
+          input_html: {class: 'span3 offset5'},
+          label: 'hello',
+          value: 'Log it!',
+          }.merge(row_attributes) %>
 <% end %>
