@@ -1,0 +1,28 @@
+<%= simple_form_for(@entry) do |f| %>
+<%= f.error_notification %>
+<div class="row">
+  <div class="span7">
+    <%= f.input :content, as: :text, label: "Give more detail about
+    what you're dealing with", placeholder: "What's your reflection?",
+    input_html: { rows: 7, class: "span6" } %>
+  </div>
+
+  <div class="span5">
+    <%= f.input :happiness, collection: 1..5, label: "Happiness Level" %>
+    <%= f.input :happiness, collection: 1..5, label: "Anxiety Level" %>
+    <%= f.input :happiness, collection: 1..5, label: "Irritation Level" %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span8">
+    <%= f.input :tag, label: "Tag your entry to understand what bothers or delights you regularly" %>
+  </div>
+</div>
+<div class="row">
+  <div class="span3 offset5">
+    <%= f.button :submit %>
+  </div>
+</div>
+
+<% end %>
