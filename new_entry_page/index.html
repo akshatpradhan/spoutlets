@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="bootstrap.min.css" rel="stylesheet" />
+    <style style="text/css">
+    body {
+        margin: 20px 50px;
+    }
+    .checkbox {
+        width: 180px;
+        margin-right: 375px;
+    }
+    .hero-unit {
+        width: 660px;
+        padding: 20px;
+    }
+    .hero-unit strong {
+        font-size: .9em;
+        display: block;
+        margin-bottom: 5px;
+    }
+    .level select {
+        width: 60px;
+    }
+    .category {
+        padding: 20px 0 0 20px;
+    }
+    .span2 {
+        text-align: center;
+    }
+    </style>
+    <title>Entries</title>
+</head>
+<body>
+    <h2>January 15,2013</h2>
+    <hr/>
+    <form>
+        <p>
+            <input type="text" placeholder="title(optional)"/>
+            <label class="checkbox pull-right">
+                <input type="checkbox"> Share on public spoutwall
+            </label>
+        </p>
+
+        <p>
+            <textarea class="span9" rows="10" placeholder="What's your reflection?"></textarea>
+        </p>
+
+        <div class="hero-unit">
+            <div class="row level">
+                <div class="span2">
+                    <strong>Happiness Level</strong>
+                    <select>
+                        <option value="">1</option>
+                    </select>
+                </div>
+
+                <div class="span2">
+                    <strong>Anxiety Level</strong>
+                    <select>
+                        <option value="">1</option>
+                    </select>
+                </div>
+
+                <div class="span2">
+                    <strong>Irritation Level</strong>
+                    <select>
+                        <option value="">1</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row category">
+                <strong>Categorize your entry to understand what bothers or delights you regularly</strong>
+                <select name="">
+                    <option value="">Family</option>
+                    <option value="">Work</option>
+                    <option value="">Others</option>
+                </select>
+            </div>
+        </div>
+
+        <input type="submit" class="btn btn-large btn-primary btn-block" value="Log it!"/>
+    </form>
+</body>
+</html>
