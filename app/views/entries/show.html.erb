@@ -1,10 +1,33 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <b>Title:</b>
+  <%= @entry.title %>
+</p>
+<p>
   <b>Content:</b>
   <%= @entry.content %>
 </p>
-
+<p>
+  <b>Happiness level:</b>
+  <%= @entry.happiness_level %>
+</p>
+<p>
+  <b>Anxiety level:</b>
+  <%= @entry.anxiety_level %>
+</p>
+<p>
+  <b>Irritation level:</b>
+  <%= @entry.irritation_level %>
+</p>
+<p>
+  <b>Category:</b>
+  <%= @entry.category %>
+</p>
+<p>
+  <b>Public:</b>
+  <%= @entry.published %>
+</p>
 
 <%= link_to 'Edit', edit_entry_path(@entry) %> |
 <%= link_to 'Back', entries_path %>
