@@ -1,6 +1,10 @@
 class Entry
   include Mongoid::Document
-  field :content, type: String
-  field :happiness, type: String
-  field :tag, type: String
+  field :title,            type: String
+  field :content,          type: String
+  field :happiness_level,  type: String
+  field :anxiety_level,    type: String
+  field :irritation_level, type: String
+  field :category,         type: String
+  field :published,        type: Boolean
 end
