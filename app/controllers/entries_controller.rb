@@ -25,6 +25,7 @@ class EntriesController < ApplicationController
   # GET /entries/new.json
   def new
     @entry = Entry.new
+    @entry.published = true
 
     respond_to do |format|
       format.html # new.html.erb
