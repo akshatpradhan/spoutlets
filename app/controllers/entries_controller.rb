@@ -1,6 +1,4 @@
-class EntriesController < ApplicationController
-  before_filter :authenticate_user!, :only => :backstory
-  
+class EntriesController < ApplicationController  
   # GET /entries
   # GET /entries.json
   def index
@@ -10,15 +8,6 @@ class EntriesController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @entries }
     end
-  end
-  
-  def backstory
-    @entries = current_user.entries
-    respond_to do |format|
-      format.html { render :index}
-      format.json { render json: @entries }
-    end
-    
   end
 
   # GET /entries/1
