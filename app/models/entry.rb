@@ -7,4 +7,6 @@ class Entry
   field :irritation_level, type: String
   field :category,         type: String
   field :published,        type: Boolean
+  
+  belongs_to :user
 end
