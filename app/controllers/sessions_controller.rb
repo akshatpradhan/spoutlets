@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
-    redirect_to '/auth/facebook'
+    redirect_to '/auth/twitter'
   end
 
 
@@ -25,6 +25,7 @@ class SessionsController < ApplicationController
   end
 
   def failure
+    params[:message] ||= 'nil'
     redirect_to root_url, :alert => "Authentication error: #{params[:message].humanize}"
   end
 
