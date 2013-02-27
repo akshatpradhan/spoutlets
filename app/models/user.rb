@@ -5,6 +5,7 @@ class User
   field :uid, type: String
   field :name, type: String
   field :email, type: String
+  has_many :entries
   attr_accessible :role_ids, :as => :admin
   attr_accessible :provider, :uid, :name, :email
   # run 'rake db:mongoid:create_indexes' to create indexes

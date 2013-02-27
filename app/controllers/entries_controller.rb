@@ -42,10 +42,11 @@ class EntriesController < ApplicationController
   # POST /entries.json
   def create
     @entry = Entry.new(params[:entry])
+    @entry.user = current_user
 
     respond_to do |format|
       if @entry.save
-        format.html { redirect_to @entry, notice: 'Entry was successfully created.' }
+        format.html { redirect_to user_url(current_user), notice: 'Entry was successfully created.' }
         format.json { render json: @entry, status: :created, location: @entry }
       else
         format.html { render action: "new" }
@@ -58,6 +59,7 @@ class EntriesController < ApplicationController
   # PUT /entries/1.json
   def update
     @entry = Entry.find(params[:id])
+    @entry.user = current_user
 
     respond_to do |format|
       if @entry.update_attributes(params[:entry])
