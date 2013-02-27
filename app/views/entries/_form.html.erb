@@ -29,19 +29,40 @@
       <div class="row">
         <div class="span2">
           <%= f.input :happiness_level,
-              collection: 1..5,
+              collection: [
+                ["1 (not very)", "1"],
+                ["2", "2"],
+                ["3", "3"],
+                ["4", "4"],
+                ["5 (very)", "5"]
+              ],
+              include_blank: "N/A",
               label: "Happiness Level",
               input_html: { class: "span1" } %>
         </div>
         <div class="span2">
           <%= f.input :anxiety_level,
-              collection: 1..5,
+              collection: [
+                ["1 (not very)", "1"],
+                ["2", "2"],
+                ["3", "3"],
+                ["4", "4"],
+                ["5 (very)", "5"]
+              ],
+              include_blank: "N/A",
               label: "Anxiety Level",
               input_html: { class: "span1" } %>
         </div>
         <div class="span2">
           <%= f.input :irritation_level,
-              collection: 1..5,
+              collection: [
+                ["1 (not very)", "1"],
+                ["2", "2"],
+                ["3", "3"],
+                ["4", "4"],
+                ["5 (very)", "5"]
+              ],
+              include_blank: "N/A",
               label: "Irritation Level",
               input_html: { class: "span1" } %>
         </div>
