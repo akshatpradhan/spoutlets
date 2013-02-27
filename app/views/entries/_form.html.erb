@@ -70,7 +70,17 @@
       <div class="row">
         <div class="span7">
           <%= f.input :category,
-              collection: %w(Family Other),
+              collection: [
+                ["other"],
+                ["alcohol"],
+                ["anxiety"],
+                ["body image"],
+                ["depression"],
+                ["disability"],
+                ["family"],
+                ["relationships"],
+              ],
+              include_blank: "N/A",
               label: "Categorize your entry to understand what bothers or delights you regularly" %>
         </div>
       </div>
