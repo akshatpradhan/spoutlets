@@ -79,7 +79,7 @@ class EntriesController < ApplicationController
     @entry.destroy
 
     respond_to do |format|
-      format.html { redirect_to entries_url }
+      format.html { redirect_to user_url(current_user), notice: 'Entry was successfully deleted.' }
       format.json { head :no_content }
     end
   end

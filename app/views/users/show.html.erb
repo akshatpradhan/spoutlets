@@ -1,13 +1,27 @@
-<h3>Your Backstory</h3>
+<div class="row">
+  <div class="span3">
+    <h3>Your Journal</h3>
+  </div>
+  <div class="span3 offset6">
+    <button class="btn pull-right"
+            type="button"><i class="icon-share"></i> share with therapist</button>
+
+  </div>
+</div>
+
 <div class="row">
   <div class="span12">
     <div class="hero-unit">
-      <h4>What's been on your mind over time</h4>
-      <p>Graph placeholder</p>
+      <div class="row">
+        <div class="span7">
+          <h4>What's been on your mind over time</h4>
+          <p>Graph placeholder</p>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="span9">
+  <div class="span11">
     <!-- Entry -->
     <% @entries.reverse.each do |entry| %>
     <div class="well">
@@ -15,45 +29,50 @@
         <div class="span1">
           <span class="label"><%= entry.category %> </span>
         </div>
-        <div class="span5">
+        <div class="span6 offset1">
           <br />
           <p><small><%= entry.content %></small></p>
           <ul class="nav nav-list">
             <li class="divider"></li>
           </ul>
         </div>
-        <div class="span1">
-          <br />
-          <span class="muted"><small><%= Date.today.strftime('%a %b %d, %Y') %></small></span>
-        </div>
-        <div class="span1">
-          <span class="badge badge-info">14</span> <br />
+        <div class="span1 offset1">
+          <span class="badge badge-info">14</span>
           <span class="text-info"> been there</span>
         </div>
       </div>
 
       <div class="row">
-        <div class="span1 offset1">
+        <div class="span2">
+          <span class="muted"><small><%= Date.today.strftime('%a %b %d, %Y') %></small></span>
+        </div>
+        <div class="span2">
           <p class="muted"><small>happiness</small></p>
           <div class="progress">
             <div class="bar" style="width: 20%;"></div>
           </div>
         </div>
-        <div class="span1">
+        <div class="span2">
           <p class="muted"><small>anxiety</small></p>
           <div class="progress">
             <div class="bar" style="width: 80%;"></div>
           </div>
         </div>
-        <div class="span1">
+        <div class="span2">
           <p class="muted"><small>irritation</small></p>
           <div class="progress">
             <div class="bar" style="width: 40%;"></div>
           </div>
         </div>
-        <div class="span4">
-          <button class="btn btn-mini pull-right"
-                  type="button"><i class="icon-ok"></i> Share with therapist</button>
+        <div class="span2">
+          <div class="btn-toolbar pull-right">
+            <div class="btn-group">
+              <a class="btn" href="#"><i class="icon-edit"></i></a>
+              <%= link_to raw('<i class="icon-trash"></i>'), entry,
+              method: :delete, data: { confirm: "Are you sure?" },
+              class: "btn" %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
