@@ -8,4 +8,7 @@ class Entry
   field :category,         type: String
   field :published,        type: Boolean
   belongs_to :user
+
+  validates :content, presence: true
+  validates :category, presence: true
 end
