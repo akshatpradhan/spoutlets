@@ -6,19 +6,16 @@
   <div class="span8">
     <ul class="nav pull-right">
     <% if user_signed_in? %>
-      <li><a href="#"><i class="icon-white
-                                icon-bookmark"></i> your therapist</a></li>
+      <li><%= link_to raw('<i class="icon-book"></i> your journal'), current_user %></li>
       <li class="divider-vertical"></li>
-      <li><a href="#"><i class="icon-white
-                                icon-bookmark"></i> your peers</a></li>
+      <li><a href="#"><i class=" icon-comment"></i> your therapist</a></li>
+      <li class="divider-vertical"></li>
+      <li><%= link_to raw('<i class="icon-group"></i> your community'), entries_path %></li>
       <li class="divider-vertical"></li>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle"
-           data-toggle="dropdown"><i class="icon-user
-                                            icon-white"></i>
-          your profile <b class="caret"></b></a>
+        data-toggle="dropdown"><i class="icon-cog"></i> <b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><%= link_to "backstory", current_user %></li>
           <li><a href="#">settings</a></li>
           <li class="divider"></li>
           <li><%= link_to 'logout', signout_path %></li>
@@ -33,6 +30,6 @@
     </ul>
   </div> <!-- end of Right Nav -->
   <div class="span2">
-    <%= link_to "log an entry", new_entry_path, :class => "btn btn-primary pull-right", :method => :get  %>
+    <%= link_to "log an entry", new_entry_path, :class => "btn btn-primary", :method => :get  %>
   </div>
 </div>
