@@ -1,6 +1,6 @@
 ### Spoutlets ###
 
-[Journal your life to your therapist](http://www.spoutlets.com) | [suggest a new idea](https://github.com/akshatpradhan/spoutlets/issues) |
+[journal your life to your therapist](http://www.spoutlets.com) | [suggest a new idea](https://github.com/akshatpradhan/spoutlets/issues) |
 [get running locally](https://github.com/akshatpradhan/spoutlets/wiki)
 
 Spoutlets is a mental health platform providing a conduit between
