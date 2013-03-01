@@ -67,7 +67,9 @@
         <div class="span2">
           <div class="btn-toolbar pull-right">
             <div class="btn-group">
-              <a class="btn" href="#"><i class="icon-edit"></i></a>
+              <%= link_to raw('<i class="icon-edit"></i>'),
+              edit_entry_path(entry), class: "btn" %>
+
               <%= link_to raw('<i class="icon-trash"></i>'), entry,
               method: :delete, data: { confirm: "Are you sure?" },
               class: "btn" %>
