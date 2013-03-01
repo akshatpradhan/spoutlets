@@ -6,11 +6,11 @@
   <div class="span8">
     <ul class="nav pull-right">
     <% if user_signed_in? %>
-      <li><%= link_to raw('<i class="icon-book"></i> your journal'), current_user %></li>
-      <li class="divider-vertical"></li>
       <li><a href="#"><i class=" icon-comment"></i> your therapist</a></li>
       <li class="divider-vertical"></li>
       <li><%= link_to raw('<i class="icon-group"></i> your community'), entries_path %></li>
+      <li class="divider-vertical"></li>
+      <li><%= link_to raw('<i class="icon-book"></i> your journal'), current_user %></li>
       <li class="divider-vertical"></li>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle"
