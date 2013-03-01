@@ -1,6 +1,6 @@
 ### Spoutlets ###
 
-[Journal your life to your therapist](http://spoutletsapp.herokuapp.com)
+[Journal your life to your therapist](http://www.spoutlets.com)
 
 Spoutlets is a mental health platform providing a conduit between
 therapists and students for video conferencing, mood tracking, and
