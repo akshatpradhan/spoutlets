@@ -40,6 +40,11 @@
               label: "Happiness Level",
               input_html: { class: "span1" } %>
         </div>
+
+        <div id="happiness-bar" class="progress progress-striped">
+          <div class="bar"></div>
+        </div>
+
         <div class="span2">
           <%= f.input :anxiety_level,
               collection: [
