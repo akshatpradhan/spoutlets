@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 ruby '1.9.3'
 gem 'rails', '3.2.12'
 group :assets do
+  gem 'lazy_high_charts'
   gem "less-rails", ">= 2.2.6"
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
