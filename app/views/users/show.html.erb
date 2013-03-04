@@ -11,13 +11,11 @@
 </div>
 
 <div class="row">
-  <div class="span12">
-    <div class="hero-unit">
-      <div class="row">
-        <div class="span7">
-          <p>placeholder for pie chart showing your issues</p>
-        </div>
-      </div>
+  <div class="span8 offset2">
+    <%= high_chart("mood_chart", @chart) do |c| %>
+      <%= raw "options.tooltip.formatter = function() {return '<b>'+ this.point.name +'</b>: '+ this.y +' %';}"  %>
+    <% end %>
+    <div id="mood_chart">
     </div>
   </div>
 
