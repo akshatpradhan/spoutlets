@@ -13,6 +13,7 @@ class Entry
   belongs_to :user
 
   validates :content, presence: true
+  validates :category, presence: true
 
   def happiness_level_width
     happiness_level * 20
