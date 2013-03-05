@@ -16,15 +16,15 @@ class Entry
   validates :category, presence: true
 
   def happiness_level_width
-    happiness_level * 20
+    happiness_level.to_i * 20
   end
 
   def anxiety_level_width
-    anxiety_level * 20
+    anxiety_level.to_i * 20
   end
 
   def irritation_level_width
-    irritation_level * 20
+    irritation_level.to_i * 20
   end
 
 end
