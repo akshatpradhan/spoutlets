@@ -30,36 +30,31 @@
         <div class="span2">
           <%= f.input :happiness_level,
               input_html: { 
-                class: "span2", 
-                :"data-slider-min" => 1, 
-                :"data-slider-step" => 1, 
-                :"data-slider-max" => 5, 
-                :"data-slider-value" => f.object.happiness_level || 1
+                class: "span2 slider", 
+                :"data-slider-value" => f.object.happiness_level
               } %>
         </div>
         <div class="span2">
           <%= f.input :anxiety_level,
               input_html: { 
-                class: "span2", 
-                :"data-slider-min" => 1, 
-                :"data-slider-step" => 1, 
-                :"data-slider-max" => 5, 
-                :"data-slider-value" => f.object.anxiety_level || 1
+                class: "span2 slider",
+                :"data-slider-value" => f.object.anxiety_level 
               } %>
         </div>
         <div class="span2">
           <%= f.input :irritation_level,
               input_html: { 
-                class: "span2", 
-                :"data-slider-min" => 1, 
-                :"data-slider-step" => 1, 
-                :"data-slider-max" => 5, 
-                :"data-slider-value" => f.object.irritation_level || 1
+                class: "span2 slider",
+                :"data-slider-value" => f.object.irritation_level  
               } %>
         </div>
         <script>
           $(function() {
-              $('input[data-slider-min]').slider();
+              $('input.slider').slider( {
+                step: 1,
+                max: 5,
+                value: 0
+              });
             });
         </script>
       </div>
