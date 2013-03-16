@@ -9,6 +9,7 @@ class User
   has_many :entries
   attr_accessible :role_ids, :as => :admin
   attr_accessible :provider, :uid, :name, :email
+  validates_uniqueness_of :email
   # run 'rake db:mongoid:create_indexes' to create indexes
   index({ email: 1 }, { unique: true, background: true })
 
