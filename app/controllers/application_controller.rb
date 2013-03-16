@@ -6,11 +6,13 @@ class ApplicationController < ActionController::Base
 
   private
     def current_user
+## Current_user method is required by CanCan.
+      user_id = session[:user_id]
       begin
-        @current_user ||= User.find(session[:user_id]) if session[:user_id]
+        User.find(user_id)
       rescue Exception => e
         nil
-      end
+      end unless user_id.blank?
     end
 
     def user_signed_in?

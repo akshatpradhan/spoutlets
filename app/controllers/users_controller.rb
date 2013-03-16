@@ -3,15 +3,13 @@ class UsersController < ApplicationController
   before_filter :correct_user?, :except => [:index]
 
   def index
-    @users = User.all
+    @users = User.all.select{|e| can? :manage, e}
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
       redirect_to @user
     else
@@ -19,9 +17,7 @@ class UsersController < ApplicationController
     end
   end
 
-
   def show
-    @user = User.find(params[:id])
     @entries = @user.entries.all
   end
 
