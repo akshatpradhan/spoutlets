@@ -9,6 +9,9 @@ class SessionsController < ApplicationController
     auth = request.env["omniauth.auth"]
     user = User.where(:provider => auth['provider'], 
                       :uid => auth['uid'].to_s).first || User.create_with_omniauth(auth)
+## Per http://guides.rubyonrails.org/security.html#sessions
+## 2.8 Session Fixation – Countermeasure: reset the session after login:
+    reset_session
     session[:user_id] = user.id
     user.add_role :admin if User.count == 1 # make the first user an admin
     if user.email.blank?
