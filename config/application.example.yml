@@ -7,11 +7,17 @@
 # makes 'Your_Gmail_Username' available as ENV["GMAIL_USERNAME"]
 # Add application configuration variables here, as shown below.
 #
+# Move this over to application.yml
+development:
+  OMNIAUTH_PROVIDER_KEY: 111408142351259
+  OMNIAUTH_PROVIDER_SECRET: a672763290b2b049384823e4a3b67fbc
+production: 
+  OMNIAUTH_PROVIDER_KEY: Your_OmniAuth_Provider_Key
+  OMNIAUTH_PROVIDER_SECRET: Your_OmniAuth_Provider_Secret
 GMAIL_USERNAME: Your_Username
 GMAIL_PASSWORD: Your_Password
 ADMIN_NAME: First User
 ADMIN_EMAIL: user@example.com
 ADMIN_PASSWORD: please
-OMNIAUTH_PROVIDER_KEY: Your_OmniAuth_Provider_Key
-OMNIAUTH_PROVIDER_SECRET: Your_OmniAuth_Provider_Secret
 ROLES: [admin, user, VIP]
+
