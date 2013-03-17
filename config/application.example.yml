@@ -7,11 +7,19 @@
 # makes 'Your_Gmail_Username' available as ENV["GMAIL_USERNAME"]
 # Add application configuration variables here, as shown below.
 #
+ROLES: [admin, user, VIP]
 GMAIL_USERNAME: Your_Username
 GMAIL_PASSWORD: Your_Password
 ADMIN_NAME: First User
 ADMIN_EMAIL: user@example.com
 ADMIN_PASSWORD: please
-OMNIAUTH_PROVIDER_KEY: Your_OmniAuth_Provider_Key
-OMNIAUTH_PROVIDER_SECRET: Your_OmniAuth_Provider_Secret
-ROLES: [admin, user, VIP]
+
+development:
+  # Facebook settings for your test app on your local box:
+  OMNIAUTH_PROVIDER_KEY: something
+  OMNIAUTH_PROVIDER_SECRET: something
+
+production:
+  # Facebook settings for your test app on Heroku:
+  OMNIAUTH_PROVIDER_KEY: something
+  OMNIAUTH_PROVIDER_SECRET: something
