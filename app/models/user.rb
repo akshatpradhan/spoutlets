@@ -23,4 +23,7 @@ class User
     end
   end
 
+  def admin?
+    role_ids.any?{|e| 'admin'==Role.find(e).name}
+  end
 end
