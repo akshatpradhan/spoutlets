@@ -30,6 +30,7 @@ group :development, :test do
 end
 
 gem 'jquery-rails'
+gem 'lazy_high_charts'
 gem "thin", ">= 1.5.0"
 gem "mongoid", ">= 3.0.14"
 gem "libv8", ">= 3.11.8"

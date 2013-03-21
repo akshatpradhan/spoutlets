@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require bootstrap-slider
 //= require twitter/bootstrap
+//= require highcharts
 //= require_tree .
