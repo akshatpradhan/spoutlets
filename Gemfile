@@ -31,7 +31,11 @@ end
 
 gem 'jquery-rails'
 gem "thin", ">= 1.5.0"
-gem "mongoid", ">= 3.0.14"
+# Per http://packages.qa.debian.org/m/mongodb.html
+#   Debian squeeze backports (stable-bpo) runs mongodb 2.0.0.
+# Per http://mongoid.org/en/mongoid/docs/installation.html#installation
+#   with mongodb 2.0.0, gem mongoid must be 3.0.x (~> 3.0.1).
+gem "mongoid", "~> 3.0.1"
 gem "libv8", ">= 3.11.8"
 gem "omniauth", ">= 1.1.1"
 gem "omniauth-facebook"
