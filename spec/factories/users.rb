@@ -9,6 +9,13 @@ FactoryGirl.define do
       email "darwin@ironcave.com"
     end
 
+    factory :end_user do
+      provider "twitter"
+      uid "111111244448902"
+      name "Newton"
+      email "newton@fallingapple.com"
+    end
+
   end
 
 end

@@ -17,8 +17,8 @@ describe EntriesController do
     # as it is far mature, has better support for omniauth and also provides test helpers to take the sign_in_user
     # pain away. I haven't used cancan in a while; for all I know you may have similar helpers here too. If thats so
     # use them. Far better than mocking.
-    user = FactoryGirl.create(:logged_in_user)
-    controller.stub!(:current_user).and_return(user)
+    @user = FactoryGirl.create(:logged_in_user)
+    controller.stub!(:current_user).and_return(@user)
   end
 
   describe "GET index" do
@@ -165,7 +165,8 @@ describe EntriesController do
     # Since specs themselves are not tested; lesser code or more standard way of doing something is better than hand created
     # objects.
     before do
-      @entry = FactoryGirl.create(:published_entry)
+      @entry = FactoryGirl.create(:published_entry, :user => @user)
+      @entry_of_another_user = FactoryGirl.create(:published_entry, :user => FactoryGirl.create(:end_user))
       # NOTE: I have used a before do construct here instead of let because, let does an entry creation only when called. In this case
       # it is called inside the expect block. So that means that when expectation is set count for created entries is still 0. So the test
       # will fail with that construct.
@@ -174,7 +175,7 @@ describe EntriesController do
     it "destroys the requested entry" do
       expect {
         delete :destroy, {:id => @entry.to_param}
-      }.to change{Entry.count}.from(1).to(0)
+      }.to change{Entry.where(:id => @entry.id).count}.from(1).to(0)
       # NOTE: from and to syntax for expecting change seems more clear to me, so making that subtle change
     end
 
@@ -182,6 +183,14 @@ describe EntriesController do
       delete :destroy, {:id => @entry.to_param}
 
       response.should redirect_to(entries_url)
+    end
+
+    it "should be allowed if entry belongs to current user" do
+      delete :destroy, {:id => @entry_of_another_user.to_param}
+      
+      response.should redirect_to(entries_url)
+      flash[:notice].should eq "Entry not found in system"
+      # NOTE: You can test the flash messages by doing this simple assertion in your controller.
     end
   end
 

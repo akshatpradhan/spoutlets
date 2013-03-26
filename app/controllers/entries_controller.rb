@@ -89,15 +89,21 @@ class EntriesController < ApplicationController
   # DELETE /entries/1
   # DELETE /entries/1.json
   def destroy
-    @entry = Entry.find(params[:id])
-    @entry.destroy
+    #@entry = Entry.find(params[:id])
+    #@entry.destroy
 
     respond_to do |format|
-      #NOTE: while url in route name is great like entries_url. It is usually a good practice to use path. Like entries_path. Lot of applications do
-      #production configurations on host name etc. urls have a chance to break them often. path is relative and not exact url; so it appends respective
-      #hostname silently
-      format.html { redirect_to entries_path, notice: 'Entry was successfully deleted.' }
-      format.json { head :no_content }
+      if @entry = current_user.entries.where(:_id => params[:id]).first
+        @entry.destroy
+        #NOTE: while url in route name is great like entries_url. It is usually a good practice to use path. Like entries_path. Lot of applications do
+        #production configurations on host name etc. urls have a chance to break them often. path is relative and not exact url; so it appends respective
+        #hostname silently
+        format.html { redirect_to entries_path, notice: 'Entry was successfully deleted.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to entries_path, notice: 'Entry not found in system' }
+        format.json { render json: "", status: :unprocessable_entity }
+      end
     end
   end
 end
