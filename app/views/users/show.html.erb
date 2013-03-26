@@ -1,3 +1,83 @@
-<h3>User</h3>
-<p>User: <%= @user.name %></p>
-<p>Email: <%= @user.email if @user.email %></p>
+<div class="row">
+  <div class="span3">
+    <h3>Your Journal</h3>
+    <p>Things on your mind over time</p>
+  </div>
+  <div class="span3 offset6">
+    <button class="btn pull-right"
+            type="button"><i class="icon-share"></i> share with therapist</button>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="span12">
+    <div class="hero-unit">
+      <div class="row">
+        <div class="span7">
+          <p>placeholder for pie chart showing your issues</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="span12">
+    <!-- Entry -->
+    <% @entries.reverse.each do |entry| %>
+    <div class="well">
+      <div class="row">
+        <div class="span1">
+          <span class="label"><%= entry.category %></span>
+        </div>
+        <div class="span6 offset1">
+          <br />
+          <p><small><%= entry.content %></small></p>
+          <ul class="nav nav-list">
+            <li class="divider"></li>
+          </ul>
+        </div>
+        <div class="span2 offset1">
+          <span class="badge badge-info">14</span><br />
+          <span class="text-info"> been there</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="span2">
+          <span class="muted"><small><%= entry.created_at.to_date.strftime('%a %b %d, %Y') %></small></span>
+        </div>
+        <div class="span2">
+          <p class="muted"><small>happiness</small></p>
+          <div class="progress">
+            <div class="bar" style="width: <%= entry.happiness_level_width %>%;"></div>
+          </div>
+        </div>
+        <div class="span2">
+          <p class="muted"><small>anxiety</small></p>
+          <div class="progress">
+            <div class="bar" style="width: <%= entry.anxiety_level_width %>%;"></div>
+          </div>
+        </div>
+        <div class="span2">
+          <p class="muted"><small>irritation</small></p>
+          <div class="progress">
+            <div class="bar" style="width: <%= entry.irritation_level_width %>%;"></div>
+          </div>
+        </div>
+        <div class="span2 offset1">
+          <div class="btn-toolbar">
+            <div class="btn-group">
+              <%= link_to raw('<i class="icon-edit"></i>'),
+              edit_entry_path(entry), class: "btn" %>
+
+              <%= link_to raw('<i class="icon-trash"></i>'), entry,
+              method: :delete, data: { confirm: "Are you sure?" },
+              class: "btn" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %><!-- end of Entry -->
+  </div>
+</div>

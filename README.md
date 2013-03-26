@@ -1,12 +1,14 @@
-Spoutlets.com
-=============
+### Spoutlets ###
 
-Spoutlets.com is a mental health platform providing a conduit between
+[journal your life to your therapist](http://www.spoutlets.com) | [suggest a new idea](https://github.com/akshatpradhan/spoutlets/issues) |
+[get running locally](https://github.com/akshatpradhan/spoutlets/wiki)
+
+Spoutlets is a mental health platform providing a conduit between
 therapists and students for video conferencing, mood tracking, and
 emotional venting. 
 
 
-License
----------------------
+![Screenshot](https://raw.github.com/akshatpradhan/spoutlets/master/spoutlets.png)
+
 
 Copyright 2012 Spoutlets, Inc.

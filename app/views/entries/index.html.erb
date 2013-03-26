@@ -1,54 +1,58 @@
-<h3>My Peer Community</h3>
-<p>Connect with others dealing with the same issues</p>
+<h3>Your Community</h3>
+<p>Connect with others dealing with similar issues</p>
 <div class="row">
-  <div class="span9">
+  <div class="span12">
     <!-- Entry -->
-    <% @entries.each do |entry| %>
+    <% @entries.reverse.each do |entry| %>
     <div class="well">
       <div class="row">
-        <div class="span1">
-          <span class="badge badge-info">14</span> <br />
+        <div class="span2">
+          <span class="badge badge-info">14</span><br />
           <span class="text-info"> been there</span>
         </div>
-        <div class="span5">
+        <div class="span6">
           <br />
           <p><small><%= entry.content %></small></p>
           <ul class="nav nav-list">
             <li class="divider"></li>
           </ul>
         </div>
-        <div class="span1">
-          <br />
-          <span class="muted"><small>12 hours ago</small></span>
-        </div>
-        <div class="span1">
-          <span class="label pull-right">Anxiety</span>
+        <div class="span1 offset1">
+          <span class="label"><%= entry.category %></span>
         </div>
       </div>
 
       <div class="row">
-        <div class="span4">
-          <p class="muted"><small>shared
+        <div class="span2">
+          <span class="muted"><small>shared
               by <i class="icon-user"></i>
-                anonymous</small></p>
+                anonymous</small></span>
+          <br />
+          <span class="muted"><small><%= entry.created_at.to_date.strftime('%a %b %d, %Y') %></small></span>
         </div>
-        <div class="span4">
+        <div class="span2">
+          <p class="muted"><small>happiness</small></p>
+          <div class="progress">
+            <div class="bar" style="width: <%= entry.happiness_level_width %>%;"></div>
+          </div>
+        </div>
+        <div class="span2">
+          <p class="muted"><small>anxiety</small></p>
+          <div class="progress">
+            <div class="bar" style="width: <%= entry.anxiety_level_width %>%;"></div>
+          </div>
+        </div>
+        <div class="span2">
+          <p class="muted"><small>irritation</small></p>
+          <div class="progress">
+            <div class="bar" style="width: <%= entry.irritation_level_width %>%;"></div>
+          </div>
+        </div>
+        <div class="span2">
           <button class="btn btn-mini pull-right"
-                  type="button"><i class="icon-ok"></i> been there</button>
+                  type="button"><i class="icon-heart"></i> been there</button>
         </div>
       </div>
     </div>
     <% end %><!-- end of Entry -->
   </div>
-  <!-- Common Issues -->
-  <div class="span2">
-    <h4>Common Issues</h4>
-    <span class="label">Anxiety</span>
-    <span class="label">romantic issues</span>
-    <span class="label">room mate</span>
-    <span class="label">sexuality</span>
-    <span class="label">future worries</span>
-    <span class="label">diet</span>
-    <span class="label">feeling lonely</span>
-  </div> <!-- end of Common Issues -->
-</div>

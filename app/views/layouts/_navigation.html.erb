@@ -6,39 +6,30 @@
   <div class="span8">
     <ul class="nav pull-right">
     <% if user_signed_in? %>
-      <li><a href="#"><i class="icon-white
-                                icon-bookmark"></i> my therapist</a></li>
+      <li><a href="#"><i class=" icon-comment"></i> your therapist</a></li>
       <li class="divider-vertical"></li>
-      <li><a href="#"><i class="icon-white
-                                icon-bookmark"></i> my peers</a></li>
+      <li><%= link_to raw('<i class="icon-group"></i> your community'), entries_path %></li>
+      <li class="divider-vertical"></li>
+      <li><%= link_to raw('<i class="icon-book"></i> your journal'), current_user %></li>
       <li class="divider-vertical"></li>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle"
-           data-toggle="dropdown"><i class="icon-user
-                                            icon-white"></i>
-          my storyline <b class="caret"></b></a>
+        data-toggle="dropdown"><i class="icon-cog"></i> <b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Profile</a></li>
-          <li><a href="#">Settings</a></li>
+          <li><a href="#">settings</a></li>
           <li class="divider"></li>
-          <li><a href="#">Logout</a></li>
+          <li><%= link_to 'logout', signout_path %></li>
         </ul>
-      </li>
-      <li class="divider-vertical"></li>
-
-      <li>
-      <%= link_to 'Logout', signout_path %>
       </li>
     <% else %>
       <li>
-      <%= link_to 'login/register', signin_path %>
+      <%= link_to 'register or login', signin_path %>
       </li>
     <% end %>
       <li class="divider-vertical"></li>
-
     </ul>
   </div> <!-- end of Right Nav -->
   <div class="span2">
-    <%= link_to "log an entry", new_entry_path, :class => "btn btn-primary", :method => :get  %>
+    <%= link_to raw('<i class="icon-plus"></i> log an entry'), new_entry_path, :class => "btn btn-primary", :method => :get  %>
   </div>
 </div>
