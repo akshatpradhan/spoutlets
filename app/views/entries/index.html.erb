@@ -33,19 +33,19 @@
         <div class="span2">
           <p class="muted"><small>happiness</small></p>
           <div class="progress">
-            <div class="bar" style="width: <%= entry.happiness_level_width %>%;"></div>
+            <div class="bar" style="width: <%= width_for(entry.happiness_level) %>%;"></div>
           </div>
         </div>
         <div class="span2">
           <p class="muted"><small>anxiety</small></p>
           <div class="progress">
-            <div class="bar" style="width: <%= entry.anxiety_level_width %>%;"></div>
+            <div class="bar" style="width: <%= width_for(entry.anxiety_level) %>%;"></div>
           </div>
         </div>
         <div class="span2">
           <p class="muted"><small>irritation</small></p>
           <div class="progress">
-            <div class="bar" style="width: <%= entry.irritation_level_width %>%;"></div>
+            <div class="bar" style="width: <%= width_for(entry.irritation_level) %>%;"></div>
           </div>
         </div>
         <div class="span2">
