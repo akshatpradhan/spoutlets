@@ -29,6 +29,7 @@ group :development, :test do
   gem "factory_girl_rails", ">= 4.1.0"
 end
 
+gem 'flat-ui-rails'
 gem 'jquery-rails'
 gem "thin", ">= 1.5.0"
 # Per http://packages.qa.debian.org/m/mongodb.html
