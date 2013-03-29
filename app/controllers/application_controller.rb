@@ -30,8 +30,18 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    def alert_unless_signed_in
+      unless user_signed_in?
+        redirect_to :back,
+            :alert => 'Register or Login is required to do this'
+      end
+    end
 
   rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_path, :alert => exception.message
+  end
+
+  rescue_from ActionController::RedirectBackError do |exception|
     redirect_to root_path, :alert => exception.message
   end
 
