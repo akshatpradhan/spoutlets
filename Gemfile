@@ -31,7 +31,7 @@ group :development, :test do
 end
 
 gem 'jquery-rails'
-gem 'lazy_high_charts'
+gem 'lazy_high_charts', "~>1.4.2"
 gem "thin", ">= 1.5.0"
 # Per http://packages.qa.debian.org/m/mongodb.html
 #   Debian squeeze backports (stable-bpo) runs mongodb 2.0.0.

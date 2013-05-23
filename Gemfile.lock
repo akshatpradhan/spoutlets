@@ -101,7 +101,7 @@ GEM
       multi_json (>= 1.0)
     launchy (2.2.0)
       addressable (~> 2.3)
-    lazy_high_charts (1.4.0)
+    lazy_high_charts (1.4.2)
       bundler (>= 1.0)
       hash-deep-merge
     less (2.2.2)
@@ -243,7 +243,7 @@ DEPENDENCIES
   figaro (~> 0.6)
   jquery-rails
   launchy (>= 2.1.2)
-  lazy_high_charts
+  lazy_high_charts (~> 1.4.2)
   less-rails (>= 2.2.6)
   libv8 (>= 3.11.8)
   mongoid (~> 3.0.1)
