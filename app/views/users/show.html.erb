@@ -11,16 +11,12 @@
 </div>
 
 <div class="row">
-  <div class="span12">
-    <div class="hero-unit">
-      <div class="row">
-        <div class="span7">
-          <p>placeholder for pie chart showing your issues</p>
-        </div>
-      </div>
-    </div>
+  <div class="span5 offset3">
+    <%= high_chart("chart_id", @user.mood_chart) %>
   </div>
+</div>
 
+<div class="row">
   <div class="span12">
     <!-- Entry -->
     <% @entries.reverse.each do |entry| %>
@@ -77,7 +73,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div><!-- end of well -->
     <% end %><!-- end of Entry -->
-  </div>
+  </div><!-- end of span12 -->
 </div>
