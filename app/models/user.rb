@@ -27,41 +27,25 @@ class User
     LazyHighCharts::HighChart.new('pie') do |chart|
       chart.options[:chart][:defaultSeriesType] = "pie"
       chart.options[:chart][:height] = 210
-      chart.options[:title][:text] = 'Mood chart of your journal'
+      chart.options[:title][:text] = 'Stuff affecting you the most'
       chart.series({
-                     name: 'Totals',
-                     data: [
-                            ['Happiness', fetch_happiness_level],
-                            ['Anxiety', fetch_anxiety_level],
-                            ['Irritation', fetch_irritation_level]
-                           ]
-
-                    })
+                     name: 'Total',
+                     data: fetch_categories
+                   })
     end
   end
 
-  def fetch_happiness_level
-    self.entries.map do |entry|
-      entry.happiness_level
-    end.compact.inject(:+)
+  def fetch_categories
+    categories = self.entries.map do |entry|
+      entry.category
+    end
+
+    {}.tap do |h|
+      categories.each do |category|
+        h[category] ||= 0
+        h[category] += 1
+      end
+    end.to_a
   end
 
-  def fetch_anxiety_level
-    self.entries.map do |entry|
-      entry.anxiety_level
-    end.compact.inject(:+)
-  end
-
-  def fetch_irritation_level
-    self.entries.map do |entry|
-      entry.irritation_level
-    end.compact.inject(:+)
-  end
-
-  # Interesting way to fetch persons mood levels and put in an array
-  # def fetch_irritation_level
-  #   self.entries.map do |entry|
-  #     [entry.created_at, entry.irritation_level]
-  #   end
-  # end
 end
