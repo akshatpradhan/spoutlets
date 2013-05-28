@@ -11,4 +11,4 @@ emotional venting.
 ![Screenshot](https://raw.github.com/akshatpradhan/spoutlets/master/spoutlets.png)
 
 
-Copyright 2012 Spoutlets, Inc.
+Copyright 2013 Spoutlets, Inc.
