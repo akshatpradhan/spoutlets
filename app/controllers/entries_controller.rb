@@ -2,7 +2,7 @@ class EntriesController < ApplicationController
   # GET /entries
   # GET /entries.json
   def index
-    @entries = Entry.all.where(published: true)
+    @entries = Entry.where(published: true)
 
     respond_to do |format|
       format.html # index.html.erb
