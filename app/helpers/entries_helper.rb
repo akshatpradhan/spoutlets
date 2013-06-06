@@ -1,7 +1,7 @@
 module EntriesHelper
 
- def width_for(well_being_state)
-   well_being_state * 20
+ def width_for(emotional_state)
+   emotional_state.to_i * 20
  end
 
 end
