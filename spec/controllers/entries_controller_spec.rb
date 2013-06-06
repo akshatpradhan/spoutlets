@@ -35,18 +35,10 @@ describe EntriesController do
   end
 
   describe "GET index" do
-    it "assigns all entries as @entries" do
+    it "returns the entries list" do
       entry = Entry.create! valid_attributes
       get :index, {}, valid_session
       assigns(:entries).should eq([entry])
-    end
-  end
-
-  describe "GET show" do
-    it "assigns the requested entry as @entry" do
-      entry = Entry.create! valid_attributes
-      get :show, {:id => entry.to_param}, valid_session
-      assigns(:entry).should eq(entry)
     end
   end
 
