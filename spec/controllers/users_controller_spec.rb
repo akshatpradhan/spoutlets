@@ -44,7 +44,6 @@ describe UsersController do
     it "redirects user to @user" do
       session[:user_id] = @user.id
       put 'update', :id => @user, :user => {:name => "ted"}
-      binding.pry
       response.should redirect_to(@user)
     end
   end

@@ -3,6 +3,8 @@ class Ability
 
   def initialize(user)
     user ||= User.new # guest user (not logged in)
+    can :update, user
+    can :show, User, :id => user.id
     if user.has_role? :admin
       can :manage, :all
     end
