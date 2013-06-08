@@ -11,6 +11,7 @@ describe EntriesController do
 
   before do
     @user = FactoryGirl.create(:user)
+    controller.stub!(:current_user).and_return(@user)
   end
 
   describe "GET index" do
