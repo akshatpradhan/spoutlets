@@ -77,7 +77,16 @@ describe EntriesController do
     describe "with valid params" do
       let(:entry) { FactoryGirl.create(:entry) }
       let(:valid_attributes) { entry.attributes }
+
       it "updates the requested entry" do
+        #I just set the user in session using test helpers defined by cancan. Couple of things to mention here
+        # 1. You need not stub or mock user here as cancan allows for setting users in session in your tests. So thats great
+        # 2. While mocking is bad, because tests continue to pass even when behavior change (that is being mocked) they defeat their own purpose; but when
+        #    there are no other alternatives, mocking or stubbing is a decent one.
+        # 3. I noticed in some of your tests, you use Entry.any_instance method. Historically any_instance has been known to cause many bugs and is a really
+        #    evil way of setting expectations. I have found with some thought, that there is always a cleaner workaround. Consider those.
+        user = FactoryGirl.create(:user)
+        session[:user_id] = user.id
         # Assuming there are no other entries in the database, this
         # specifies that the Entry created on the previous line
         # receives the :update_attributes message with whatever params are
