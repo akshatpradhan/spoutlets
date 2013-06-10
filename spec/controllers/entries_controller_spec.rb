@@ -28,7 +28,7 @@ describe EntriesController do
   describe "GET edit" do
     it "assigns the requested entry as @entry" do
       entry.save!
-      get :edit, {:id => entry.to_param}
+      get :edit, {id: entry.to_param}
       assigns(:entry).should eq(entry)
     end
   end
@@ -37,18 +37,18 @@ describe EntriesController do
     describe "with valid params" do
       it "creates a new Entry" do
         expect {
-          post :create, {:entry => valid_attributes}
+          post :create, {entry: valid_attributes}
         }.to change(Entry, :count).by(1)
       end
 
       it "assigns a newly created entry as @entry" do
-        post :create, {:entry => valid_attributes}
+        post :create, {entry: valid_attributes}
         assigns(:entry).should be_a(Entry)
         assigns(:entry).should be_persisted
       end
 
       it "redirects to the created entry" do
-        post :create, {:entry => valid_attributes}
+        post :create, {entry: valid_attributes}
         response.should redirect_to(user_url(user))
       end
     end
@@ -57,14 +57,14 @@ describe EntriesController do
       it "assigns a newly created but unsaved entry as @entry" do
         # Trigger the behavior that occurs when invalid params are submitted
         Entry.any_instance.stub(:save).and_return(false)
-        post :create, {:entry => { "content" => "invalid value" }}
+        post :create, {entry: { "content" => "invalid value" }}
         assigns(:entry).should be_a_new(Entry)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Entry.any_instance.stub(:save).and_return(false)
-        post :create, {:entry => { "content" => "invalid value" }}
+        post :create, {entry: { "content" => "invalid value" }}
         response.should render_template("new")
       end
     end
@@ -83,18 +83,18 @@ describe EntriesController do
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
         Entry.any_instance.should_receive(:update_attributes).with({ "content" => "" })
-        put :update, {:id => entry.to_param, :entry => { "content" => "" }}
+        put :update, {id: entry.to_param, entry: { "content" => "" }}
       end
 
       it "assigns the requested entry as @entry" do
         user = FactoryGirl.create(:user)
         session[:session_id] = user.id
-        put :update, {:id => entry.to_param, :entry => valid_attributes}
+        put :update, {id: entry.to_param, entry: valid_attributes}
         assigns(:entry).should eq(entry)
       end
 
       it "redirects to the user profile path" do
-        put :update, {:id => entry.to_param, :entry => valid_attributes}
+        put :update, {id: entry.to_param, entry: valid_attributes}
         response.should redirect_to(user_url(user))
       end
     end
@@ -103,14 +103,14 @@ describe EntriesController do
       it "assigns the entry as @entry" do
         # Trigger the behavior that occurs when invalid params are submitted
         Entry.any_instance.stub(:save).and_return(false)
-        put :update, {:id => entry.to_param, :entry => { "content" => "invalid value" }}
+        put :update, {id: entry.to_param, entry: { "content" => "invalid value" }}
         assigns(:entry).should eq(entry)
       end
 
       it "re-renders the 'edit' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Entry.any_instance.stub(:save).and_return(false)
-        put :update, {:id => entry.to_param, :entry => { "content" => "invalid value" }}
+        put :update, {id: entry.to_param, entry: { "content" => "invalid value" }}
         response.should render_template("edit")
       end
     end
@@ -122,12 +122,12 @@ describe EntriesController do
     end
     it "destroys the requested entry" do
       expect {
-        delete :destroy, {:id => entry.to_param}
+        delete :destroy, {id: entry.to_param}
       }.to change(Entry, :count).by(-1)
     end
 
     it "redirects to the user profile path" do
-      delete :destroy, {:id => entry.to_param}
+      delete :destroy, {id: entry.to_param}
       response.should redirect_to(user_url(user))
     end
   end
