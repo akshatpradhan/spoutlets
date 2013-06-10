@@ -2,6 +2,9 @@
 
 FactoryGirl.define do
   factory :entry do
-    content ""
+    content "i'm sick & its annoying bc i need to work but I'm tired as hell."
+    category "just feeling off"
+    published "true"
+    anxiety_level "5"
   end
 end
