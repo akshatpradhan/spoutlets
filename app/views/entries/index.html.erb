@@ -1,5 +1,12 @@
 <h3>Your Community</h3>
 <p>Connect with others dealing with similar issues</p>
+
+<div class="row">
+  <div class="span5 offset3">
+    <%= high_chart("chart_id", @users.mood_chart) %>
+  </div>
+</div>
+
 <div class="row">
   <div class="span12">
     <!-- Entry -->
