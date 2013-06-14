@@ -15,4 +15,29 @@ class Entry
   validates :content, presence: true
   validates :category, presence: true
 
+  def self.mood_chart
+    LazyHighCharts::HighChart.new('pie') do |chart|
+      chart.options[:chart][:defaultSeriesType] = "pie"
+      chart.options[:chart][:height] = 210
+      chart.options[:title][:text] = 'Stuff affecting you the most'
+      chart.series({
+                     name: 'Total',
+                     data: fetch_categories
+                   })
+    end
+  end
+
+  def self.fetch_categories
+    categories = all.map do |entry|
+      entry.category
+    end
+
+    {}.tap do |h|
+      categories.each do |category|
+        h[category] ||= 0
+        h[category] += 1
+      end
+    end.to_a
+  end
+
 end
