@@ -24,6 +24,9 @@ class EntriesController < ApplicationController
   # GET /entries/new
   # GET /entries/new.json
   def new
+    @user = current_user
+#    @user = User.find(params[:id])
+    @entries = @user.entries.all
     @entry = Entry.new
 
     respond_to do |format|
