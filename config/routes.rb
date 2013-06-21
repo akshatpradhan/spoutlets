@@ -1,4 +1,7 @@
 Spoutlets::Application.routes.draw do
+  resources :therapists
+
+
   resources :entries
 
 
