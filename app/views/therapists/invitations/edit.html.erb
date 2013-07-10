@@ -1,11 +1,15 @@
-<h2><%= t 'devise.invitations.edit.header' %></h2>
-
+<h2>Create your account</h2>
+<h3>Enter your name and password to access your client's Journal</h3>
 <%= simple_form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f| %>
   <%= devise_error_messages! %>
   <%= f.hidden_field :invitation_token %>
-
+  <%= f.input :name %>
   <%= f.input :password %>
   <%= f.input :password_confirmation %>
 
-  <%= f.submit t("devise.invitations.edit.submit_button") %>
+  <div class="form-actions">
+    <%= f.button :submit, "Create account!",
+        class: "btn-large btn-block  btn-primary" %>
+  </div>
+
 <% end %>

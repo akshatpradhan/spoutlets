@@ -4,6 +4,15 @@ class ApplicationController < ActionController::Base
   helper_method :user_signed_in?
   helper_method :correct_user?
 
+  # def after_sign_in_path_for(resource)
+  #   therapist_path(resource)
+  # end
+
+  protected
+    def authenticate_inviter!
+      authenticate_user!
+    end
+
   private
     def current_user
       begin

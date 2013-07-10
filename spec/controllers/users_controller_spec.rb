@@ -4,6 +4,14 @@ describe UsersController do
 
   before do
     @user = FactoryGirl.create(:user)
+    OmniAuth.config.test_mode = true
+    OmniAuth.config.mock_auth[:facebook] = {
+      'uid'  => '100004721472441',
+      'provider' => 'facebook',
+      'info' => {
+        'name' => 'Bob Raymond',
+      }
+    }
   end
 
   describe "Get 'show' for non-logged in user" do
@@ -46,5 +54,34 @@ describe UsersController do
       response.should redirect_to(@user)
     end
   end
+
+  ################################################
+  # As a User                                    #
+  # I want to share my entries with my Therapist #
+  # So that my Therapist can view my entries     #
+  ################################################
+
+  describe "creates new invitation" do
+    it "What goes here" do
+      session[:user_id] = @user.id
+      visit '/therapists/invitation/new'
+      page.should have_content('Keep your')
+    end
+  end
+
+  # describe "GET new invitation" do
+  #   it "assigns a new entry as @entry" do
+  #     get :new, {}
+  #     assigns(:invitation).should be_a_new(Invitation)
+  #   end
+  # end
+
+  # Given I am on /users/:id
+  # When I click Share with Therapist
+  # Then I should see /therapists/invitation/new
+
+  # Given I am on /therapists/invitation/new
+  # When I fill in my Therapist email
+  # Then I should see my entries
 
 end
