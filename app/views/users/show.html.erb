@@ -40,7 +40,23 @@
 
       <div class="row">
         <div class="span2">
-          <span class="muted"><small><%= entry.created_at.to_date.strftime('%a %b %d, %Y') %></small></span>
+          <span class="muted">
+            <small>
+              <%= entry.created_at.to_date.strftime('%a %b %d, %Y') %>
+            </small>
+          </span>
+          <br />
+          <br />
+          <% if entry.published? %>
+          <span class="muted" data-toggle="tooltip" data-placement="right" title="Shared with community">
+            <i class="icon-unlock"></i>
+          </span>
+          <% else %>
+          <span class="muted" data-toggle="tooltip" data-placement="right" title="Kept to yourself">
+            <i class="icon-lock"></i>
+          </span>
+          <% end %>
+
         </div>
         <div class="span2">
           <p class="muted"><small>happiness</small></p>

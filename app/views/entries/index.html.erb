@@ -31,11 +31,18 @@
 
       <div class="row">
         <div class="span2">
-          <span class="muted"><small>shared
-              by <i class="icon-user"></i>
-                anonymous</small></span>
+          <span class="muted" data-toggle="tooltip" data-placement="right" title="Shared with community">
+            <i class="icon-unlock"></i>
+            <small>
+              by anonymous
+            </small>
+          </span>
           <br />
-          <span class="muted"><small><%= entry.created_at.to_date.strftime('%a %b %d, %Y') %></small></span>
+          <span class="muted">
+            <small>
+              <%= entry.created_at.to_date.strftime('%a %b %d, %Y') %>
+            </small>
+          </span>
         </div>
         <div class="span2">
           <p class="muted"><small>happiness</small></p>
