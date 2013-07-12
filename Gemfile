@@ -28,6 +28,7 @@ group :development, :test do
   gem "rspec-rails", "~> 2.13.2"
   gem "factory_girl_rails", "~> 4.2.1"
   gem "jazz_hands", "~> 0.5.0"
+  gem "jasmine-rails", "~> 0.4.5"
 end
 
 gem 'jquery-rails'
