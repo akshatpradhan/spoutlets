@@ -22,7 +22,7 @@ feature "User wanting to share entries with therapist" do
     fill_in 'email', with: 'therapist@example.com'
     click_button 'Enable Access!'
     page.should have_content('An invitation email has been sent to therapist@example.com.')
-    page.should have_content('Your journal')
+    page.should have_content(/your journal/i)
     # Invitation email should be sent with inviter's last 5 journal entries.
   end
 end
