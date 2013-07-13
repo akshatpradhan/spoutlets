@@ -11,62 +11,62 @@
   <div class="span12">
     <!-- Entry -->
     <% @entries.reverse.each do |entry| %>
-    <div class="well">
-      <div class="row">
-        <div class="span2">
-          <span class="badge badge-info">14</span><br />
-          <span class="text-info"> been there</span>
+      <div class="well">
+        <div class="row">
+          <div class="span2">
+            <span class="badge badge-info" data-id="been-there">14</span><br />
+            <span class="text-info"> been there</span>
+          </div>
+          <div class="span6">
+            <br />
+            <p><small><%= entry.content %></small></p>
+            <ul class="nav nav-list">
+              <li class="divider"></li>
+            </ul>
+          </div>
+          <div class="span1 offset1">
+            <span class="label"><%= entry.category %></span>
+          </div>
         </div>
-        <div class="span6">
-          <br />
-          <p><small><%= entry.content %></small></p>
-          <ul class="nav nav-list">
-            <li class="divider"></li>
-          </ul>
-        </div>
-        <div class="span1 offset1">
-          <span class="label"><%= entry.category %></span>
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="span2">
-          <span class="muted" data-toggle="tooltip" data-placement="right" title="Shared with community">
-            <i class="icon-unlock"></i>
-            <small>
-              by anonymous
-            </small>
-          </span>
-          <br />
-          <span class="muted">
-            <small>
-              <%= entry.created_at.to_date.strftime('%a %b %d, %Y') %>
-            </small>
-          </span>
-        </div>
-        <div class="span2">
-          <p class="muted"><small>happiness</small></p>
-          <div class="progress">
-            <div class="bar" style="width: <%= width_for(entry.happiness_level) %>%;"></div>
+        <div class="row">
+          <div class="span2">
+            <span class="muted" data-toggle="tooltip" data-placement="right" title="Shared with community">
+              <i class="icon-unlock"></i>
+              <small>
+                by anonymous
+              </small>
+            </span>
+            <br />
+            <span class="muted">
+              <small>
+                <%= entry.created_at.to_date.strftime('%a %b %d, %Y') %>
+              </small>
+            </span>
           </div>
-        </div>
-        <div class="span2">
-          <p class="muted"><small>anxiety</small></p>
-          <div class="progress">
-            <div class="bar" style="width: <%= width_for(entry.anxiety_level) %>%;"></div>
+          <div class="span2">
+            <p class="muted"><small>happiness</small></p>
+            <div class="progress">
+              <div class="bar" style="width: <%= width_for(entry.happiness_level) %>%;"></div>
+            </div>
           </div>
-        </div>
-        <div class="span2">
-          <p class="muted"><small>irritation</small></p>
-          <div class="progress">
-            <div class="bar" style="width: <%= width_for(entry.irritation_level) %>%;"></div>
+          <div class="span2">
+            <p class="muted"><small>anxiety</small></p>
+            <div class="progress">
+              <div class="bar" style="width: <%= width_for(entry.anxiety_level) %>%;"></div>
+            </div>
           </div>
-        </div>
-        <div class="span2">
-          <button class="btn btn-mini pull-right"
-                  type="button"><i class="icon-heart"></i> been there</button>
+          <div class="span2">
+            <p class="muted"><small>irritation</small></p>
+            <div class="progress">
+              <div class="bar" style="width: <%= width_for(entry.irritation_level) %>%;"></div>
+            </div>
+          </div>
+          <div class="span2">
+            <button data-action="been-there" class="btn btn-mini pull-right"
+                    type="button"><i class="icon-heart"></i> been there</button>
+          </div>
         </div>
       </div>
-    </div>
     <% end %><!-- end of Entry -->
   </div>
