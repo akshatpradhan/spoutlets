@@ -1,4 +1,9 @@
 Spoutlets::Application.routes.draw do
+  devise_for :therapists
+
+  resources :therapists
+
+
   resources :entries
 
 
