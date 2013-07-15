@@ -9,7 +9,7 @@ describe UsersController do
   describe "Get 'show' for non-logged in user" do
     it "redirects user to the root path to login" do
       session[:user_id] = nil
-      get 'show', :id => @user.id
+      get :show, id: @user.id
       response.should redirect_to(root_path)
     end
   end
@@ -18,7 +18,7 @@ describe UsersController do
     it "redirects user to root path with access denied" do
       @user2 = FactoryGirl.create(:user)
       session[:user_id] = @user.id
-      get 'show', :id => @user2
+      get :show, id: @user2
       response.should redirect_to(root_path)
     end
   end
@@ -26,7 +26,7 @@ describe UsersController do
   describe "GET 'show' for logged in user" do
     it "returns http success" do
       session[:user_id] = @user.id
-      get 'show', :id => @user
+      get :show, id: @user
       response.should be_success
     end
   end
@@ -34,7 +34,7 @@ describe UsersController do
   describe "GET edit" do
     it "returns http success" do
       session[:user_id] = @user.id
-      get 'edit', :id => @user
+      get :edit, id: @user
       response.should be_success
     end
   end
@@ -42,7 +42,7 @@ describe UsersController do
   describe "PUT update" do
     it "redirects user to @user" do
       session[:user_id] = @user.id
-      put 'update', id: @user, user: {name: "ted"}
+      put :update, id: @user, user: {name: "ted"}
       response.should redirect_to(@user)
     end
   end

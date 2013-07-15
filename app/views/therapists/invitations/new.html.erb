@@ -1,0 +1,26 @@
+<%= simple_form_for resource,
+    as: resource_name,
+    url: invitation_path(resource_name),
+    html: {method: :post, class: 'form-horizontal'} do |f| %>
+<%= f.error_notification %>
+<h3>Share with your therapist</h3>
+<hr />
+<div class="row">
+  <div class="span7">
+    <p>
+      Keep your therapist current with your life's happenings by
+      giving secure access to your latest journal entries.
+    </p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span7">
+    <%= f.input :email,
+        label: "Your therapist's email" %>
+
+    <%= f.button :submit, "Enable Access!",
+        class: "btn-large btn-primary" %>
+  </div>
+</div>
+<% end %>
