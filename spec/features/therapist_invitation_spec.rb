@@ -29,7 +29,14 @@ end
 
 feature "Therapist wanting to access entries of inviter" do
   scenario "creates a new account" do
-    pending "figure out accept_invitation_path"
+    #1. Click invite link from above, it will look something like this /therapists/invitation/accept?invitation_token=uqASMfBxmfXvzSxg9q4b
+    # How do I obtain that url and pass it to visit?
+    fill_in 'name', with: 'Deana Finkel'
+    fill_in 'password', with: 'Password1'
+    fill_in 'password confirmation', with: 'Password1'
+    click_button 'Create account!'
+    page.should have_content(/Your password was set successfully. You are now signed in./i)
+    page.should have_content(/Client Journals/i)
   end
 
   scenario "views entries of inviter" do
