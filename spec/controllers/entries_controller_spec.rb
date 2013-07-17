@@ -70,6 +70,48 @@ describe EntriesController do
     end
   end
 
+  describe "POST create for non-logged in user" do
+    before do
+      session[:user_id] = nil
+    end
+
+    describe "with valid params" do
+      it "does not create a new Entry" do
+        expect {
+          post :create, {entry: valid_attributes}
+        }.to change(Entry, :count).by(0)
+      end
+
+      it "does not assign a newly created entry as @entry" do
+        post :create, {entry: valid_attributes}
+        assigns(:entry).should be_a(Entry)
+        assigns(:entry).should be_persisted
+      end
+
+      it "redirects users to authentication" do
+        post :create, {entry: valid_attributes}
+        response.should redirect_to(signin_path)
+        # or should the above be assert_redirected_to '/auth/twitter' ?
+      end
+    end
+
+    describe "with invalid params" do
+      it "assigns a newly created but unsaved entry as @entry" do
+        # Trigger the behavior that occurs when invalid params are submitted
+        Entry.any_instance.stub(:save).and_return(false)
+        post :create, {entry: { "content" => "invalid value" }}
+        assigns(:entry).should be_a_new(Entry)
+      end
+
+      it "re-renders the 'new' template" do
+        # Trigger the behavior that occurs when invalid params are submitted
+        Entry.any_instance.stub(:save).and_return(false)
+        post :create, {entry: { "content" => "invalid value" }}
+        response.should render_template("new")
+      end
+    end
+  end
+
   describe "PUT update" do
     before do
       entry.save!
