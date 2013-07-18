@@ -2,7 +2,9 @@ class EntriesController < ApplicationController
   # GET /entries
   # GET /entries.json
   def index
-    @entries = Entry.where(published: true)
+    @entries = Entry.where(published: true) #TODO use Entries.published
+    # you should hide unapproved entries even if they have the published field set to true
+    # @entries = Entry.published (.published calls the .approved class method, see app/model/entry.rb for a suggestion)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,17 +43,32 @@ class EntriesController < ApplicationController
   # POST /entries.json
   def create
     @entry = Entry.new(params[:entry])
-    @entry.user = current_user
+      @entry.user = current_user
+      @entry.approved = false unless current_user # approved field is true by default (see app/models/entry.rb)
 
     respond_to do |format|
       if @entry.save
-        format.html { redirect_to user_url(current_user), notice: 'Entry was successfully created.' }
+        format.html do
+          if @entry.user
+            redirection_path = user_url(current_user) # redirect to user#show if user is already signed in
+            flash_message = 'Entry was successfully created.' # set the correct flash message
+          else
+            redirection_path = preview_entry_path(@entry.id) # redirect to entries/:id/preview when user is not signed in
+            flash_message = 'Entry needs to be approved.' # set the correct flash message for this unapproved entry
+          end
+          redirect_to redirection_path, notice: flash_message # user the local variables set in the conditional statements above
+        end
         format.json { render json: @entry, status: :created, location: @entry }
       else
         format.html { render action: "new" }
         format.json { render json: @entry.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def preview
+    #TODO this is exactly like the show action, a refactoring could be done in app/views/entries/show.html.erb with conditional renderings and partials
+    @entry = Entry.find(params[:id])
   end
 
   # PUT /entries/1
