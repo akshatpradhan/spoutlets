@@ -32,6 +32,7 @@
 <% if user_signed_in? %>
   <%= form_for @entry do |f| %>
     <%= f.hidden_field :approved, value: true %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.submit "Approve this entry", class: "btn btn-block btn-success" %>
   <% end %>
 <% else %>

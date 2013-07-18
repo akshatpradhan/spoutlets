@@ -43,7 +43,7 @@ feature "non-logged in user wanting to add an entry" do
     page.should have_link "Cancel this entry"
   end
 
-  scenario "entry is approved after facebook signin" do
+  scenario "entry can be approved and assigned to user after facebook signin" do
     # faking Facebook signin (this redirects to /auth/facebook and records the current path in the origin oauth parameters, see sessions_controller.rb for details)
     click_on "Sign in with Facebook"
 
@@ -53,6 +53,7 @@ feature "non-logged in user wanting to add an entry" do
     click_on "Approve this entry" # see app/view/entries/preview.html.erb for this button which is a hidden form updating the entry with approved = true
     page.should have_content "Entry was successfully updated"
 
+    Entry.first.user_id.should_not be_nil # check if created entry has a user_id filled in
     Entry.first.approved.should be_true # check if created entry approved field has been set to true
   end
 
