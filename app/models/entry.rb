@@ -9,11 +9,21 @@ class Entry
   field :irritation_level, type: Integer
   field :category,         type: String
   field :published,        type: Boolean
+  field :approved,         type: Boolean, default: false # this is for entries created by guest users and it is set to true before creation when a user is signed in
 
   belongs_to :user
 
   validates :content, presence: true
   validates :category, presence: true
+
+  ## class methods
+  def self.published
+    where(published: true).approved
+  end
+
+  def self.approved
+    where(approved: true)
+  end
 
   def self.mood_chart
     LazyHighCharts::HighChart.new('pie') do |chart|

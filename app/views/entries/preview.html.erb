@@ -1,0 +1,45 @@
+<h4>This is a preview of your entry.</h4>
+
+<p>
+  <b>Title:</b>
+  <%= @entry.title %>
+</p>
+<p>
+  <b>Content:</b>
+  <%= @entry.content %>
+</p>
+<p>
+  <b>Happiness level:</b>
+  <%= @entry.happiness_level %>
+</p>
+<p>
+  <b>Anxiety level:</b>
+  <%= @entry.anxiety_level %>
+</p>
+<p>
+  <b>Irritation level:</b>
+  <%= @entry.irritation_level %>
+</p>
+<p>
+  <b>Category:</b>
+  <%= @entry.category %>
+</p>
+<p>
+  <b>Public:</b>
+  <%= @entry.published %>
+</p>
+
+<% if user_signed_in? %>
+  <%= form_for @entry do |f| %>
+    <%= f.hidden_field :approved, value: true %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.submit "Approve this entry", class: "btn btn-block btn-success" %>
+  <% end %>
+<% else %>
+  <div class="well">
+    <p>In order to log this entry you need to sign in. You can abandon the entry submission by clicking the 'Cancel this entry' button.</p>
+  </div>
+
+  <%= link_to "Sign in with Facebook to confirm this entry", signin_path, class: "btn btn-block btn-success" %>
+  <%= link_to "Cancel this entry", @entry, data: {confirm: "Are you sure ?"}, method: :delete, class: "btn btn-block btn-danger" %>
+<% end %>

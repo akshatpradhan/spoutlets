@@ -4,7 +4,9 @@ Spoutlets::Application.routes.draw do
   resources :therapists
 
 
-  resources :entries
+  resources :entries do
+    get :preview, on: :member # this is a custom route to render a preview of an entry created by a guest user
+  end
 
 
   root :to => 'entries#index'

@@ -15,9 +15,10 @@ class SessionsController < ApplicationController
     session[:user_id] = user.id
     user.add_role :admin if User.count == 1 # make the first user an admin
     if user.email.blank?
-      redirect_to edit_user_path(user), :alert => "Please enter your email address."
+      redirect_to (request.env['omniauth.origin'] || edit_user_path(user)), :alert => "Please enter your email address." # the origin parameters records the page from which the request to facebook signin has been called, this is used in entries#preview to redirect back after facebook signin
+      # TODO: when a guest is creating an entry and has no email recorded in his facebook profile he is redirected to user#edit after facebook signin instead of the preview_entry_path. Maybe you need to highlight his unapproved entries in his profile page or something like that.
     else
-      redirect_to root_url, :notice => 'Signed in!'
+      redirect_to (request.env['omniauth.origin'] || root_url), :notice => 'Signed in!'
     end
 
   end
