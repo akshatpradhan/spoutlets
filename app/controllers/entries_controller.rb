@@ -1,4 +1,6 @@
 class EntriesController < ApplicationController
+  before_filter :alert_unless_signed_in, only: :create
+
   # GET /entries
   # GET /entries.json
   def index
@@ -80,6 +82,15 @@ class EntriesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to user_url(current_user), notice: 'Entry was successfully deleted.' }
       format.json { head :no_content }
+    end
+  end
+
+  private
+
+  def alert_unless_signed_in
+    unless user_signed_in?
+      flash[:alert] = 'Register or Login so you can keep track of your entries.'
+      redirect_to :action => 'new'
     end
   end
 end
