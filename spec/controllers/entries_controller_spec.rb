@@ -25,6 +25,14 @@ describe EntriesController do
     end
   end
 
+  describe "GET new for non-logged in user" do
+    it "redirect to the root path" do
+      session[:user_id] = nil
+      get :new
+      response.should redirect_to(root_path)
+    end
+  end
+
   describe "GET edit" do
     it "assigns the requested entry as @entry" do
       entry.save!
