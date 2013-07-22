@@ -1,26 +1,20 @@
 <%= simple_form_for resource,
     as: resource_name,
     url: invitation_path(resource_name),
-    html: {method: :post, class: 'form-horizontal'} do |f| %>
+    html: {method: :post, class: 'form-vertical'} do |f| %>
 <%= f.error_notification %>
-<h3>Share with your therapist</h3>
-<hr />
 <div class="row">
-  <div class="span7">
-    <p>
-      Keep your therapist current with your life's happenings by
-      giving secure access to your latest journal entries.
-    </p>
+  <div class="span5 offset4">
+    <%= image_tag "invitation_callout.png" %>
   </div>
 </div>
-
+<br />
 <div class="row">
-  <div class="span7">
+  <div class="span3 offset5">
     <%= f.input :email,
         label: "Your therapist's email" %>
-
     <%= f.button :submit, "Enable Access!",
-        class: "btn-large btn-primary" %>
+        class: "btn-large btn-success pull-right" %>
   </div>
 </div>
 <% end %>
