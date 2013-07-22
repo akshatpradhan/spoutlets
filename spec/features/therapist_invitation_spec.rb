@@ -20,7 +20,7 @@ feature "User wanting to share entries with therapist" do
     visit new_therapist_invitation_path
     # NOTE => GET /therapists/invitation/new after signing in
     fill_in 'email', with: 'therapist@example.com'
-    click_button 'Enable Access!'
+    click_button 'Give secure access!'
     page.should have_content('An invitation email has been sent to therapist@example.com.')
     page.should have_content(/your journal/i)
     ActionMailer::Base.deliveries.last.to.should include("therapist@example.com")
