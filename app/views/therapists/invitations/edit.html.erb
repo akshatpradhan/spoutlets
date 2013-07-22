@@ -1,15 +1,25 @@
-<h2>Create your account</h2>
-<h3>Enter your name and password to access your client's Journal</h3>
-<%= simple_form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :invitation_token %>
-  <%= f.input :name %>
-  <%= f.input :password %>
-  <%= f.input :password_confirmation %>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Create account!",
-        class: "btn-large btn-block  btn-primary" %>
+<%= simple_form_for resource,
+    as: resource_name,
+    url: invitation_path(resource_name),
+    html: { :method => :put, class: "form-horizontal" } do |f| %>
+<div class="row">
+  <div class="span8 offset2">
+    <%= image_tag "therapist_signup_callout.png" %>
   </div>
-
+</div>
+<br />
+<div class="row">
+  <div class="span6 offset3">
+    <%= f.error_notification %>
+    <%= f.hidden_field :invitation_token %>
+    <%= f.input :name,
+        label: "Your full name" %>
+    <%= f.input :password,
+        label: "Your password" %>
+    <%= f.input :password_confirmation,
+        label: "Your password again =(" %>
+    <%= f.button :submit, "View your client's journal!",
+        class: "btn-large btn-success pull-right" %>
+  </div>
+</div>
 <% end %>
