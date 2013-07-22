@@ -2,7 +2,6 @@
     as: resource_name,
     url: invitation_path(resource_name),
     html: {method: :post, class: 'form-vertical'} do |f| %>
-<%= f.error_notification %>
 <div class="row">
   <div class="span5 offset4">
     <%= image_tag "invitation_callout.png" %>
@@ -10,11 +9,14 @@
 </div>
 <br />
 <div class="row">
-  <div class="span3 offset5">
+  <div class="span4 offset4">
+    <%= f.error_notification %>
     <%= f.input :email,
-        label: "Your therapist's email" %>
-    <%= f.button :submit, "Enable Access!",
-        class: "btn-large btn-success pull-right" %>
+        label: false,
+        placeholder: "Your therapist's email" %>
+    <%= f.button :submit, "Give secure access!",
+        class: "btn-large btn-block btn-success" %>
   </div>
 </div>
+
 <% end %>
