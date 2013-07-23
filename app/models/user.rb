@@ -15,6 +15,9 @@ class User
   # run 'rake db:mongoid:create_indexes' to create indexes
   index({ email: 1 }, { unique: true, background: true })
 
+  validates :name, uniqueness: true
+  validates :email, uniqueness: true
+
   def self.create_with_omniauth(auth)
     create! do |user|
       user.provider = auth['provider']
