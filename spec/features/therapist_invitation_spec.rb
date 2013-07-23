@@ -2,8 +2,6 @@ require 'spec_helper'
 
 feature "User wanting to share entries with therapist" do
 
-  let(:user) {FactoryGirl.create(:user)}
-
   background do
     OmniAuth.config.test_mode = true
     OmniAuth.config.mock_auth[:facebook] = {
@@ -39,7 +37,7 @@ feature "User wanting to share entries with therapist" do
     click_button 'View your client'
     page.should have_content(/Your password was set successfully. You are now signed in./i)
     page.should have_content(/Client Journals/i)
-    therapist.invited_by.should == user
+    therapist.invited_by.should == User.first
   end
 
   scenario "views entries of inviter" do
