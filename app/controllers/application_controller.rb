@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
   protected
     def authenticate_inviter!
       authenticate_user!
+      @current_user
     end
 
   private
