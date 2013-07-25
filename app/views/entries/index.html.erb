@@ -6,71 +6,68 @@
     <%= high_chart("chart_id", @entries.mood_chart) do |c|%>
        <%= "options.colors = #{chart_colors}".html_safe %>
     <% end %>
-      
   </div>
 </div>
-
+<hr />
 <div class="row">
   <div class="span12">
     <!-- Entry -->
     <% @entries.reverse.each do |entry| %>
-    <div class="well">
       <div class="row">
-        <div class="span2">
-          <span class="badge badge-info">14</span><br />
-          <span class="text-info"> been there</span>
+        <div class="span12">
+          <h3 class="muted">
+            <%= entry.title %>
+          </h3>
         </div>
-        <div class="span6">
-          <br />
-          <p><small><%= entry.content %></small></p>
-          <ul class="nav nav-list">
-            <li class="divider"></li>
-          </ul>
+        <div class="span9">
+          <p>
+            <%= simple_format(entry.content) %>
+          </p>
         </div>
-        <div class="span1 offset1">
-          <span class="label"><%= entry.category %></span>
+        <div class="span3">
+          <span class="badge badge-info pull-right">14</span><br />
+          <span class="text-info pull-right"> know the feeling</span>
         </div>
       </div>
-
+      <br />
       <div class="row">
-        <div class="span2">
+        <div class="span9">
           <span class="muted" data-toggle="tooltip" data-placement="right" title="Shared with community">
-            <i class="icon-unlock"></i>
-            <small>
-              by anonymous
-            </small>
-          </span>
-          <br />
-          <span class="muted">
-            <small>
-              <%= entry.created_at.to_date.strftime('%a %b %d, %Y') %>
-            </small>
+            <i class="icon-unlock"></i><small> by </small><i class="icon-user"> </i><small> anonymous on </small><i class="icon-calendar"> </i><small> <%= entry.created_at.to_date.strftime('%a %b %d, %Y') %> under</small>
+            <span class="label"><%= entry.category %></span>
           </span>
         </div>
-        <div class="span2">
+        <div class="span3">
+          <button class="btn btn-mini pull-right"
+                  type="button"><i class="icon-heart"></i> been there</button>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="span4">
           <p class="muted"><small>happiness</small></p>
           <div class="progress">
             <div class="bar" style="width: <%= width_for(entry.happiness_level) %>%;"></div>
           </div>
         </div>
-        <div class="span2">
+        <div class="span4">
           <p class="muted"><small>anxiety</small></p>
           <div class="progress">
             <div class="bar" style="width: <%= width_for(entry.anxiety_level) %>%;"></div>
           </div>
         </div>
-        <div class="span2">
+        <div class="span4">
           <p class="muted"><small>irritation</small></p>
           <div class="progress">
             <div class="bar" style="width: <%= width_for(entry.irritation_level) %>%;"></div>
           </div>
         </div>
-        <div class="span2">
-          <button class="btn btn-mini pull-right"
-                  type="button"><i class="icon-heart"></i> been there</button>
-        </div>
       </div>
-    </div>
+      <br />
+      <ul class="nav nav-list">
+        <li class="divider"></li>
+      </ul>
     <% end %><!-- end of Entry -->
   </div>
+
 </div>
