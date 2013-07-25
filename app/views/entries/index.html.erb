@@ -20,7 +20,9 @@
           </h3>
         </div>
         <div class="span9">
-          <p><%= entry.content %></p>
+          <p>
+            <%= simple_format(entry.content) %>
+          </p>
         </div>
         <div class="span3">
           <span class="badge badge-info pull-right">14</span><br />
