@@ -41,7 +41,7 @@
     <% if entry.published? %>
     <span class="muted" data-toggle="tooltip" data-placement="right" title="Shared with community">
       <i class="icon-unlock"></i><small> on </small><i class="icon-calendar"> </i><small> <%= entry.created_at.to_date.strftime('%a %b %d, %Y') %> under</small>
-      <span class="label"><%= entry.category %></span>
+      <span class="label label-info"><%= entry.category %></span>
     </span>
     <% else %>
     <span class="muted" data-toggle="tooltip" data-placement="right" title="Kept to yourself">
