@@ -30,7 +30,7 @@ class User
     LazyHighCharts::HighChart.new('pie') do |chart|
       chart.options[:chart][:defaultSeriesType] = "pie"
       chart.options[:chart][:height] = 210
-      chart.options[:title][:text] = 'Stuff affecting you the most'
+      chart.options[:title][:text] = 'A breakdown of things on your mind'
       chart.series({
                      name: 'Total',
                      data: fetch_categories
