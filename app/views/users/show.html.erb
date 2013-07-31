@@ -59,25 +59,30 @@
     </div>
   </div>
 </div>
-<br />
 <div class="row">
   <div class="span4">
+    <% if entry.happiness_level %>
     <p class="muted"><small>happiness</small></p>
     <div class="progress">
       <div class="bar bar-success" style="width: <%= width_for(entry.happiness_level) %>%;"></div>
     </div>
+    <% end %>
   </div>
   <div class="span4">
+    <% if entry.anxiety_level %>
     <p class="muted"><small>anxiety</small></p>
     <div class="progress">
       <div class="bar bar-warning" style="width: <%= width_for(entry.anxiety_level) %>%;"></div>
     </div>
+    <% end %>
   </div>
   <div class="span4">
+    <% if entry.irritation_level %>
     <p class="muted"><small>irritation</small></p>
     <div class="progress">
       <div class="bar bar-danger" style="width: <%= width_for(entry.irritation_level) %>%;"></div>
     </div>
+    <% end %>
   </div>
 </div>
 <br />
