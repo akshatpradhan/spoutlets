@@ -1,11 +1,4 @@
 <div class="row">
-  <div class="span3">
-    <h3>Your Journal</h3>
-    <p>Things on your mind over time</p>
-  </div>
-</div>
-
-<div class="row">
   <div class="span5 offset3">
     <%= high_chart("chart_id", @user.mood_chart) do |c| %>
        <%= "options.colors = #{chart_colors}".html_safe %>
@@ -15,78 +8,86 @@
 
 <div class="row">
   <div class="span12">
-    <!-- Entry -->
-    <% @entries.reverse.each do |entry| %>
-    <div class="well">
-      <div class="row">
-        <div class="span1">
-          <span class="label"><%= entry.category %></span>
-        </div>
-        <div class="span6 offset1">
-          <h3 class="muted"><%= entry.title %></h3>
-          <p><small><%= entry.content %></small></p>
-          <ul class="nav nav-list">
-            <li class="divider"></li>
-          </ul>
-        </div>
-        <div class="span2 offset1">
-          <span class="badge badge-info">14</span><br />
-          <span class="text-info"> been there</span>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="span2">
-          <span class="muted">
-            <small>
-              <%= entry.created_at.to_date.strftime('%a %b %d, %Y') %>
-            </small>
-          </span>
-          <br />
-          <br />
-          <% if entry.published? %>
-          <span class="muted" data-toggle="tooltip" data-placement="right" title="Shared with community">
-            <i class="icon-unlock"></i>
-          </span>
-          <% else %>
-          <span class="muted" data-toggle="tooltip" data-placement="right" title="Kept to yourself">
-            <i class="icon-lock"></i>
-          </span>
-          <% end %>
-
-        </div>
-        <div class="span2">
-          <p class="muted"><small>happiness</small></p>
-          <div class="progress">
-            <div class="bar" style="width: <%= width_for(entry.happiness_level) %>%;"></div>
-          </div>
-        </div>
-        <div class="span2">
-          <p class="muted"><small>anxiety</small></p>
-          <div class="progress">
-            <div class="bar" style="width: <%= width_for(entry.anxiety_level) %>%;"></div>
-          </div>
-        </div>
-        <div class="span2">
-          <p class="muted"><small>irritation</small></p>
-          <div class="progress">
-            <div class="bar" style="width: <%= width_for(entry.irritation_level) %>%;"></div>
-          </div>
-        </div>
-        <div class="span2 offset1">
-          <div class="btn-toolbar">
-            <div class="btn-group">
-              <%= link_to raw('<i class="icon-edit"></i>'),
-              edit_entry_path(entry), class: "btn" %>
-
-              <%= link_to raw('<i class="icon-trash"></i>'), entry,
-              method: :delete, data: { confirm: "Are you sure?" },
-              class: "btn" %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div><!-- end of well -->
-    <% end %><!-- end of Entry -->
-  </div><!-- end of span12 -->
+    <h2 class="text-info">
+      Your entries
+    </h2>
+  </div>
 </div>
+
+<!-- Entry -->
+<% @entries.reverse.each do |entry| %>
+<div class="row">
+  <div class="span12">
+    <ul class="nav nav-list">
+      <li class="divider"></li>
+    </ul>
+    <h4>
+      <%= entry.title %>
+    </h4>
+  </div>
+  <div class="span9">
+    <p>
+      <%= simple_format(entry.content) %>
+    </p>
+  </div>
+  <div class="span3">
+    <span class="badge badge-info pull-right">14</span><br />
+    <span class="text-info pull-right"> know the feeling</span>
+  </div>
+</div>
+<br />
+<div class="row">
+  <div class="span9">
+    <% if entry.published? %>
+    <span class="muted" data-toggle="tooltip" data-placement="right" title="Shared with community">
+      <i class="icon-unlock"></i><small> on </small><i class="icon-calendar"> </i><small> <%= entry.created_at.to_date.strftime('%a %b %d, %Y') %> under</small>
+      <span class="label label-info"><%= entry.category %></span>
+    </span>
+    <% else %>
+    <span class="muted" data-toggle="tooltip" data-placement="right" title="Kept to yourself">
+      <i class="icon-lock"></i><small> on </small><i class="icon-calendar"> </i><small> <%= entry.created_at.to_date.strftime('%a %b %d, %Y') %> under</small>
+      <span class="label label-info"><%= entry.category %></span>
+    </span>
+    <% end %>
+  </div>
+  <div class="span3">
+    <div class="btn-toolbar pull-right">
+      <div class="btn-group">
+        <%= link_to raw('<i class="icon-edit"></i>'),
+        edit_entry_path(entry), class: "btn" %>
+
+        <%= link_to raw('<i class="icon-trash"></i>'), entry,
+        method: :delete, data: { confirm: "Are you sure?" },
+        class: "btn" %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="span4">
+    <% if entry.happiness_level %>
+    <p class="muted"><small>happiness</small></p>
+    <div class="progress">
+      <div class="bar bar-success" style="width: <%= width_for(entry.happiness_level) %>%;"></div>
+    </div>
+    <% end %>
+  </div>
+  <div class="span4">
+    <% if entry.anxiety_level %>
+    <p class="muted"><small>anxiety</small></p>
+    <div class="progress">
+      <div class="bar bar-warning" style="width: <%= width_for(entry.anxiety_level) %>%;"></div>
+    </div>
+    <% end %>
+  </div>
+  <div class="span4">
+    <% if entry.irritation_level %>
+    <p class="muted"><small>irritation</small></p>
+    <div class="progress">
+      <div class="bar bar-danger" style="width: <%= width_for(entry.irritation_level) %>%;"></div>
+    </div>
+    <% end %>
+  </div>
+</div>
+<br />
+<% end %><!-- end of Entry -->
