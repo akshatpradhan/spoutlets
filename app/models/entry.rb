@@ -19,7 +19,7 @@ class Entry
     LazyHighCharts::HighChart.new('pie') do |chart|
       chart.options[:chart][:defaultSeriesType] = "pie"
       chart.options[:chart][:height] = 210
-      chart.options[:title][:text] = "A breakdown of things on everybody's mind"
+      chart.options[:title][:text] = "Issues on everybody's mind"
       chart.series({
                      name: 'Total',
                      data: fetch_categories
