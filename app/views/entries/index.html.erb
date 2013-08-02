@@ -7,7 +7,7 @@
       Journal your life issues and your therapist will read them before your next session
     </p>
   </div>
-  <div class="span6">
+  <div class="span4">
     <%= high_chart("chart_id", @entries.mood_chart) do |c|%>
        <%= "options.colors = #{chart_colors}".html_safe %>
     <% end %>
@@ -36,7 +36,7 @@
 </div>
 
 <div class="row">
-  <div class="span6">
+  <div class="span8">
     <p>
       <%= simple_format(entry.content) %>
     </p>
@@ -45,7 +45,7 @@
       <span class="label label-info"><%= entry.category %></span>
     </span>
   </div>
-  <div class="span4 offset2">
+  <div class="span4">
     <span class="badge badge-info pull-right">14</span><br />
     <span class="text-info pull-right"> know the feeling</span><br /><br />
     <button class="btn btn-mini pull-right"
