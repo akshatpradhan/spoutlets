@@ -11,33 +11,27 @@
     <h2 class="text-info">
       Your entries
     </h2>
+    <ul class="nav nav-list">
+      <li class="divider"></li>
+    </ul>
   </div>
 </div>
 
 <!-- Entry -->
 <% @entries.reverse.each do |entry| %>
 <div class="row">
-  <div class="span12">
-    <ul class="nav nav-list">
-      <li class="divider"></li>
-    </ul>
+  <div class="span7">
     <h4>
       <%= entry.title %>
     </h4>
   </div>
-  <div class="span9">
+</div>
+
+<div class="row">
+  <div class="span8">
     <p>
       <%= simple_format(entry.content) %>
     </p>
-  </div>
-  <div class="span3">
-    <span class="badge badge-info pull-right">14</span><br />
-    <span class="text-info pull-right"> know the feeling</span>
-  </div>
-</div>
-<br />
-<div class="row">
-  <div class="span9">
     <% if entry.published? %>
     <span class="muted" data-toggle="tooltip" data-placement="right" title="Shared with community">
       <i class="icon-unlock"></i><small> on </small><i class="icon-calendar"> </i><small> <%= entry.created_at.to_date.strftime('%a %b %d, %Y') %> under</small>
@@ -50,7 +44,10 @@
     </span>
     <% end %>
   </div>
-  <div class="span3">
+  <div class="span4">
+    <span class="badge badge-info pull-right">14</span><br />
+    <span class="text-info pull-right"> know the feeling</span><br />
+
     <div class="btn-toolbar pull-right">
       <div class="btn-group">
         <%= link_to raw('<i class="icon-edit"></i>'),
@@ -61,28 +58,23 @@
         class: "btn" %>
       </div>
     </div>
-  </div>
-</div>
-<div class="row">
-  <div class="span4">
+    <br />
     <% if entry.happiness_level %>
-    <p class="muted"><small>happiness</small></p>
+    <p class="text-info">happiness</p>
     <div class="progress">
       <div class="bar bar-success" style="width: <%= width_for(entry.happiness_level) %>%;"></div>
     </div>
     <% end %>
-  </div>
-  <div class="span4">
-    <% if entry.anxiety_level %>
-    <p class="muted"><small>anxiety</small></p>
+
+    <% if entry.happiness_level %>
+    <p class="text-info">anxiety</p>
     <div class="progress">
       <div class="bar bar-warning" style="width: <%= width_for(entry.anxiety_level) %>%;"></div>
     </div>
     <% end %>
-  </div>
-  <div class="span4">
+
     <% if entry.irritation_level %>
-    <p class="muted"><small>irritation</small></p>
+    <p class="text-info">irritation</p>
     <div class="progress">
       <div class="bar bar-danger" style="width: <%= width_for(entry.irritation_level) %>%;"></div>
     </div>
@@ -90,4 +82,12 @@
   </div>
 </div>
 <br />
+<br />
+<div class="row">
+  <div class="span12">
+    <ul class="nav nav-list">
+      <li class="divider"></li>
+    </ul>
+  </div>
+</div>
 <% end %><!-- end of Entry -->
