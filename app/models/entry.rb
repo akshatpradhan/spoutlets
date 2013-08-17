@@ -20,6 +20,7 @@ class Entry
       chart.options[:chart][:defaultSeriesType] = "pie"
       chart.options[:chart][:height] = 210
       chart.options[:title][:text] = "Issues on everybody's mind"
+      chart.options[:chart][:backgroundColor] = '#f5f0d7'
       chart.series({
                      name: 'Total',
                      data: fetch_categories
