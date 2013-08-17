@@ -1,24 +1,103 @@
 <div class="row">
-  <div class="span6">
-    <br />
-    <br />
-    <br />
+  <div class="span11 offset2">
     <p class="lead">
-      Journal your life issues and your therapist will read them before your next session
+      Journal your life issues for your therapist to read before your next session.
     </p>
   </div>
-  <div class="span4">
+</div>
+<div class="row">
+  <div class="span5 offset2">
     <%= high_chart("chart_id", @entries.mood_chart) do |c|%>
        <%= "options.colors = #{chart_colors}".html_safe %>
     <% end %>
   </div>
+  <div class="span5">
+    <%= image_tag "illustration_placeholder.png" %>
+  </div>
 </div>
+<br />
+<br />
+<div class="row">
+  <div class="span6 offset3">
+    <button class="btn btn-primary btn-embossed btn-huge btn-block" type="button" href="#myModal" role="button" data-toggle="modal">
+      <i class="icon-heart"></i> Learn more
+    </button>
 
+    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal">
+        <div class="modal-header">
+          <button type="button" class="close fui-cross" data-dismiss="modal" aria-hidden="true"></button>
+          <h3>Learn more...</h3>
+        </div>
+        <div class="modal-body">
+          <div class="tabbable tabs-left">
+            <ul class="nav nav-tabs">
+              <li class="active">
+                <a href="#howitworks" data-toggle="tab">How it works</a>
+              </li>
+              <li>
+                <a href="#home" data-toggle="tab">VP of Product</a>
+              </li>
+              <li>
+                <a href="#profile" data-toggle="tab">VP of Technology</a>
+              </li>
+              <li>
+                <a href="#security" data-toggle="tab">Security & Privacy</a>
+              </li>
+            </ul>
+
+            <div id="myTabContent" class="tab-content">
+              <div class="tab-pane fade in active" id="howitworks">
+                <h5>
+                  Why share?
+                </h5>
+                <p>
+                   Knowing you better lets your therapist map better approaches to your issues.
+                </p>
+                <a href="#">Video demo of Spoutlets</a>
+                <%= image_tag "invitation_callout.png" %>
+              </div>
+              <div class="tab-pane fade" id="home">
+                <h4>Billie DeMott</h4>
+                <h5>Cofounder</h5>
+                <span>
+                  <a href="http://www.linkedin.com/in/billiedemott"><i class="icon-linkedin"></i> </a>
+                </span>
+                <p>
+                  Yeah it's Billie with an ie, i.e. I'm a girl. Interested in UI, UX, startups, entrepreneurship, witty wordplay and maintaining mental health.
+                </p>
+              </div>
+              <div class="tab-pane fade" id="profile">
+                <h4>Akshat Pradhan</h4>
+                <h5>Cofounder</h5>
+                <span>
+                  <a href="http://www.linkedin.com/in/akshatpradhan"><i class="icon-linkedin"></i> </a>
+                </span>
+                <p>
+                  Akshat Pradhan spearheaded IT security and coded on the Rails stack for ActBlue. He has held security and systems roles at places like VeriSign and is an alum of Clark University, majoring in Physics. He is the founder of the Boston Security Meetup, a large group discussing cyber security and platform architecture. He is also organizer of UX Boston, another group discussing user experience and design.
+                </p>
+              </div>
+              <div class="tab-pane fade" id="security">
+                <h4>Security & Privacy</h4>
+                <p>
+                  We're not completely compliant. But we're getting there! Even we use this site, and don't want our information out there. So we take security & privacy very seriously. Please view our
+                  <a href="http://github.com/akshatpradhan/information-security-policy">Information Security Policy</a>. Also, only you own the data, you can delete your account anytime by sending an email to akshat@spoutlets.com.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br />
+<br />
 <div class="row">
   <div class="span12">
-    <h2 class="text-info">
+    <h3>
       Shared entries
-    </h2>
+    </h3>
     <ul class="nav nav-list">
       <li class="divider"></li>
     </ul>
@@ -40,32 +119,36 @@
     <p>
       <%= simple_format(entry.content) %>
     </p>
-    <span class="muted" data-toggle="tooltip" data-placement="right" title="Shared with community">
+    <span data-toggle="tooltip" data-placement="right" title="Shared with community">
       <i class="icon-unlock"></i><small> by </small><i class="icon-user"> </i><small> anonymous on </small><i class="icon-calendar"> </i><small> <%= entry.created_at.to_date.strftime('%a %b %d, %Y') %> under</small>
-      <span class="label label-info"><%= entry.category %></span>
+      <span class="label label-inverse"><%= entry.category %></span>
     </span>
   </div>
-  <div class="span4">
-    <span class="badge badge-info pull-right">14</span><br />
-    <span class="text-info pull-right"> know the feeling</span><br /><br />
-    <button class="btn btn-mini pull-right"
-            type="button"><i class="icon-heart"></i> been there</button>
+  <div class="span3 offset1">
+    <span class="pull-right">
+      You and <b><%= rand(10) %></b> others know the feeling
+    </span>
+    <br /><br />
+    <button class="btn btn-mini btn-inverse pull-right" type="button">
+      <i class="icon-heart"></i> been there
+    </button>
+    <br /><br /><br />
     <% if entry.happiness_level %>
-    <p class="text-info">happiness</p>
+    <p class="text-success">happiness</p>
     <div class="progress">
       <div class="bar bar-success" style="width: <%= width_for(entry.happiness_level) %>%;"></div>
     </div>
     <% end %>
 
     <% if entry.anxiety_level %>
-    <p class="text-info">anxiety</p>
+    <p class="text-warning">anxiety</p>
     <div class="progress">
       <div class="bar bar-warning" style="width: <%= width_for(entry.anxiety_level) %>%;"></div>
     </div>
     <% end %>
 
     <% if entry.irritation_level %>
-    <p class="text-info">irritation</p>
+    <p class="text-danger">irritation</p>
     <div class="progress">
       <div class="bar bar-danger" style="width: <%= width_for(entry.irritation_level) %>%;"></div>
     </div>

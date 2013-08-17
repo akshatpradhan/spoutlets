@@ -8,9 +8,9 @@
 
 <div class="row">
   <div class="span12">
-    <h2 class="text-info">
+    <h3>
       Your entries
-    </h2>
+    </h3>
     <ul class="nav nav-list">
       <li class="divider"></li>
     </ul>
@@ -33,48 +33,51 @@
       <%= simple_format(entry.content) %>
     </p>
     <% if entry.published? %>
-    <span class="muted" data-toggle="tooltip" data-placement="right" title="Shared with community">
+    <span data-toggle="tooltip" data-placement="right" title="Shared with community">
       <i class="icon-unlock"></i><small> on </small><i class="icon-calendar"> </i><small> <%= entry.created_at.to_date.strftime('%a %b %d, %Y') %> under</small>
-      <span class="label label-info"><%= entry.category %></span>
+      <span class="label label-inverse"><%= entry.category %></span>
     </span>
     <% else %>
-    <span class="muted" data-toggle="tooltip" data-placement="right" title="Kept to yourself">
+    <span data-toggle="tooltip" data-placement="right" title="Kept to yourself">
       <i class="icon-lock"></i><small> on </small><i class="icon-calendar"> </i><small> <%= entry.created_at.to_date.strftime('%a %b %d, %Y') %> under</small>
-      <span class="label label-info"><%= entry.category %></span>
+      <span class="label label-inverse"><%= entry.category %></span>
     </span>
     <% end %>
   </div>
-  <div class="span4">
-    <span class="badge badge-info pull-right">14</span><br />
-    <span class="text-info pull-right"> know the feeling</span><br />
-
+  <div class="span3 offset1">
+    <span class="pull-right">
+      You and <b><%= rand(10) %></b> others know the feeling
+    </span>
+    <br /><br />
     <div class="btn-toolbar pull-right">
       <div class="btn-group">
         <%= link_to raw('<i class="icon-edit"></i>'),
-        edit_entry_path(entry), class: "btn" %>
+              edit_entry_path(entry),
+              class: "btn btn-inverse" %>
 
-        <%= link_to raw('<i class="icon-trash"></i>'), entry,
-        method: :delete, data: { confirm: "Are you sure?" },
-        class: "btn" %>
+        <%= link_to raw('<i class="icon-trash"></i>'),
+              entry,
+              method: :delete, data: { confirm: "Are you sure?" },
+              class: "btn btn-inverse" %>
       </div>
     </div>
-    <br />
+    <br /><br /><br />
     <% if entry.happiness_level %>
-    <p class="text-info">happiness</p>
+    <p class="text-success">happiness</p>
     <div class="progress">
       <div class="bar bar-success" style="width: <%= width_for(entry.happiness_level) %>%;"></div>
     </div>
     <% end %>
 
     <% if entry.anxiety_level %>
-    <p class="text-info">anxiety</p>
+    <p class="text-warning">anxiety</p>
     <div class="progress">
       <div class="bar bar-warning" style="width: <%= width_for(entry.anxiety_level) %>%;"></div>
     </div>
     <% end %>
 
     <% if entry.irritation_level %>
-    <p class="text-info">irritation</p>
+    <p class="text-danger">irritation</p>
     <div class="progress">
       <div class="bar bar-danger" style="width: <%= width_for(entry.irritation_level) %>%;"></div>
     </div>
