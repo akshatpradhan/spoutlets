@@ -7,7 +7,7 @@ Spoutlets::Application.routes.draw do
   resources :entries
 
 
-  root :to => 'entries#index'
+  root :to => 'home#index'
   resources :users, :only => [:index, :show, :edit, :update ]
   match '/auth/:provider/callback' => 'sessions#create'
   match '/signin' => 'sessions#new', :as => :signin

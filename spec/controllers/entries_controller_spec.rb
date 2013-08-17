@@ -18,6 +18,14 @@ describe EntriesController do
     end
   end
 
+  describe "GET index for non-logged in user" do
+    it "redirect to the root path" do
+      session[:user_id] = nil
+      get :index
+      response.should redirect_to(root_path)
+    end
+  end
+
   describe "GET new" do
     it "assigns a new entry as @entry" do
       get :new, {}
