@@ -1,24 +1,24 @@
 <div class="row">
-  <div class="span4">
+  <div class="span5">
     <%= link_to "Spoutlets", root_path, :class => 'brand' %>
     <br />
-    <span><small>the <i class="icon-wrench"></i> you need for mental wellness</small></span>
+    <span class="text-inverse"><small>the <i class="icon-wrench"></i> you need for mental wellness</small></span>
   </div>
   <!-- Right Nav -->
-  <div class="span8">
+  <div class="span7">
     <ul class="nav pull-right">
     <% if user_signed_in? %>
       <li>
-        <%= link_to raw('<i class="icon-group"></i> community'),
-            entries_path %>
+        <%= link_to raw('<i class="icon-group" data-toggle="tooltip" title="Your community" data-placement="bottom"></i>'),
+              entries_path %>
       </li>
       <li>
-        <%= link_to raw('<i class="icon-book"></i> journal'),
-            current_user %>
+        <%= link_to raw('<i class="icon-book" data-toggle="tooltip" title="Your journal" data-placement="bottom"></i>'),
+              current_user %>
       </li>
       <li>
-        <%= link_to raw('<i class="icon-share"></i> share w/ therapist'),
-            new_therapist_invitation_path %>
+        <%= link_to raw('<i class="icon-share" data-toggle="tooltip" title="Share with therapist" data-placement="bottom"></i>'),
+              new_therapist_invitation_path %>
       </li>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle"
@@ -30,20 +30,19 @@
         </ul>
       </li>
       <%= link_to raw('<i class="icon-plus"></i> log an entry'),
-          new_entry_path,
-          class: "btn btn-small btn-primary",
-          style: "margin-top: 20px;",
-          method: :get  %>
-
+            new_entry_path,
+            class: "btn btn-small btn-embossed btn-primary",
+            style: "margin-top: 10px;",
+            method: :get  %>
     <% else %>
       <li>
         <%= link_to 'register or login', signin_path %>
       </li>
       <%= link_to raw('<i class="icon-plus"></i> log an entry'),
-          new_entry_path,
-          class: "btn btn-small btn-primary",
-          style: "margin-top: 20px;",
-          method: :get  %>
+            new_entry_path,
+            class: "btn btn-small btn-embossed btn-primary",
+            style: "margin-top: 10px;",
+            method: :get  %>
     <% end %>
     </ul>
   </div> <!-- end of Right Nav -->
