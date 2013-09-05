@@ -10,7 +10,8 @@
   <div class="span4 offset1">
     <%= f.input :published,
         as: :boolean,
-        label: "Share with community" %>
+        label: "Share with community",
+        input_html: { data: {toggle: :checkbox} } %>
   </div>
 </div>
 <div class="row">
