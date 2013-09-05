@@ -33,7 +33,8 @@ describe SessionsController do
       FactoryGirl.create(:user)
       visit '/signin'
       page.should have_content "Signed in!"
-      current_path.should == '/'
+      page.should have_content 'Shared entries'
+      current_path.should == entries_path
     end
   end
 
