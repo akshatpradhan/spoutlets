@@ -6,5 +6,6 @@ FactoryGirl.define do
     category "just feeling off"
     published "true"
     anxiety_level "5"
+    user
   end
 end

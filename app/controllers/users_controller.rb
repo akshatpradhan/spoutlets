@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @entries = @user.entries.all
+    @entries = @user.entries
   end
 
 end
