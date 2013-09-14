@@ -17,7 +17,7 @@ feature "User wanting to view entries" do
   end
 
   scenario "anxiety bar should be visible when value is > 0" do
-    FactoryGirl.create(:entry)
+    FactoryGirl.create(:entry, user: user)
     visit entries_path
     page.should have_content("anxiety")
     visit home_path
@@ -27,7 +27,7 @@ feature "User wanting to view entries" do
   end
 
   scenario "anxiety bar should not be visible when value is 0" do
-    entry = FactoryGirl.create(:entry, anxiety_level: 0)
+    entry = FactoryGirl.create(:entry, anxiety_level: 0, user: user)
     visit entries_path
     page.should_not have_content("anxiety")
     visit home_path
