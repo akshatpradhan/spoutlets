@@ -18,4 +18,15 @@ describe Entry do
     end
   end
 
+  describe ".latest" do
+    before do
+      FactoryGirl.create(:user_with_entries, entries_count: 5)
+    end
+    it "should return 3 latest entries" do
+      #  MongoDB count method ignores limit in queries. So use .entries.
+      # .entries method returns the query result as an array, similar to the
+      # .to_a method which works as well.
+      Entry.latest.entries.count.should == 3
+    end
+  end
 end
