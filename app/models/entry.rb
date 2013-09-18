@@ -15,6 +15,12 @@ class Entry
   validates :content, presence: true
   validates :category, presence: true
 
+  # Syntactic sugar for class method
+  # def self.recent(3)
+  #   desc(:created_at).limit(3)
+  # end
+  scope :latest, desc(:created_at).limit(3)
+
   def self.mood_chart
     LazyHighCharts::HighChart.new('pie') do |chart|
       chart.options[:chart][:defaultSeriesType] = "pie"
