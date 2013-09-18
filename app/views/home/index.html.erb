@@ -133,21 +133,21 @@
       <i class="icon-heart"></i> been there
     </button>
     <br /><br /><br />
-    <% if entry.happiness_level %>
+    <% if entry.happiness_level && entry.happiness_level > 0 %>
     <p class="text-success">happiness</p>
     <div class="progress">
       <div class="bar bar-success" style="width: <%= width_for(entry.happiness_level) %>%;"></div>
     </div>
     <% end %>
 
-    <% if entry.anxiety_level %>
+    <% if entry.anxiety_level && entry.anxiety_level > 0 %>
     <p class="text-warning">anxiety</p>
     <div class="progress">
       <div class="bar bar-warning" style="width: <%= width_for(entry.anxiety_level) %>%;"></div>
     </div>
     <% end %>
 
-    <% if entry.irritation_level %>
+    <% if entry.irritation_level && entry.irritation_level > 0 %>
     <p class="text-danger">irritation</p>
     <div class="progress">
       <div class="bar bar-danger" style="width: <%= width_for(entry.irritation_level) %>%;"></div>
