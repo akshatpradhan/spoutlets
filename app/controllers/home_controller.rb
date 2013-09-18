@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @entries = Entry.where(published: true).desc(:created_at).limit(3)
+    @entries = Entry.where(published: true)
 
     respond_to do |format|
       format.html # index.html.erb
