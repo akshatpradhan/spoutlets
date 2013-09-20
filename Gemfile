@@ -50,3 +50,4 @@ gem "simple_form", ">= 2.0.4"
 gem "figaro", "~> 0.6"
 gem "devise", "~> 2.2.4"
 gem 'devise_invitable', '~> 1.1.8'
+gem 'mongoid-likeable', '~> 2.0.1'
