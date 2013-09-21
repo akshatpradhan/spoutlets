@@ -38,12 +38,11 @@
   </div>
   <div class="span3 offset1">
     <span class="pull-right">
-      You and <b><%= rand(10) %></b> others know the feeling
+      <%= like_status_for(entry, current_user) %>
     </span>
     <br /><br />
-    <button class="btn btn-mini btn-inverse pull-right" type="button">
-      <i class="icon-heart"></i> been there
-    </button>
+    <% like_or_unlike_action = entry.liked?(current_user) ? unlike_entry_path(entry) : like_entry_path(entry) %>
+    <%= link_to content_tag(:i, nil, class: "icon-heart") + " been there", like_or_unlike_action, method: :put, class: "btn btn-mini btn-inverse pull-right" %>
     <br /><br /><br />
     <% if entry.happiness_level && entry.happiness_level > 0 %>
     <p class="text-success">happiness</p>

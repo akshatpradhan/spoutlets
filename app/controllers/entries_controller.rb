@@ -12,6 +12,18 @@ class EntriesController < ApplicationController
     end
   end
 
+  def like
+    @entry = Entry.find(params[:id])
+    @entry.like current_user
+    redirect_to entries_path
+  end
+
+  def unlike
+    @entry = Entry.find(params[:id])
+    @entry.unlike current_user
+    redirect_to entries_path
+  end
+
   # GET /entries/1
   # GET /entries/1.json
   def show
