@@ -10,11 +10,10 @@ module EntriesHelper
    if entry.liked? user
      out << "You"
      out << "and" if entry.likes > 1
-     out << "#{entry.likes - 1} others" if entry.likes > 1
+     out << "<b>#{entry.likes - 1}</b> others" if entry.likes > 1
    else
-     out << "#{entry.likes} others" if entry.likes > 1
+     out << "<b>#{entry.likes}</b> others" if entry.likes > 1
    end
-   #You and <b><%= rand(10) %></b> others know the feeling
    out << "know the feeling."
    out.join(" ").html_safe
  end

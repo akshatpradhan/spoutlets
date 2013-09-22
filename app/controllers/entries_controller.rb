@@ -14,14 +14,24 @@ class EntriesController < ApplicationController
 
   def like
     @entry = Entry.find(params[:id])
-    @entry.like current_user
-    redirect_to entries_path
+    respond_to do |format|
+      format.html do
+        @entry.like current_user
+        redirect_to entries_url
+      end
+      format.js
+    end
   end
 
   def unlike
     @entry = Entry.find(params[:id])
-    @entry.unlike current_user
-    redirect_to entries_path
+    respond_to do | format |
+      format.html do
+        @entry.unlike current_user
+        redirect_to entries_url
+      end
+      format.js
+    end
   end
 
   # GET /entries/1

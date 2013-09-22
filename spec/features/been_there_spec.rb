@@ -17,9 +17,9 @@ feature "Users can like shared entries" do
 
   context "when only the current user likes the entry" do
     let!(:entry) { FactoryGirl.create(:entry) }
-    scenario "page should return 'you know the feeling'" do
+    scenario "page should return 'you know the feeling'", js: true do
       visit entries_path
-      print page.html
+      page.should have_content "been there"
       click_link "been there"
       page.should have_content "You know the feeling."
       click_link "been there"
@@ -29,9 +29,8 @@ feature "Users can like shared entries" do
 
   context "when the current user and others like the entry" do
     let!(:entry) { FactoryGirl.create(:entry, likes: 5) }
-    scenario "page should return 'you know the feeling'" do
+    scenario "page should return 'you know the feeling'", js: true do
       visit entries_path
-      print page.html
       click_link "been there"
       page.should have_content "You and 5 others know the feeling."
       click_link "been there"

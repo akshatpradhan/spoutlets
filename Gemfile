@@ -24,6 +24,7 @@ group :test do
   gem "email_spec", "~> 1.4.0"
   gem "launchy", "~> 2.3.0"
   gem "capybara", "~> 2.1.0"
+  gem "selenium-webdriver"
   gem "cucumber-rails", "~> 1.3.1", :require => false
 end
 
