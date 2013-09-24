@@ -15,11 +15,11 @@ feature "Users can like shared entries" do
     visit signin_path
   end
 
-  context "when only the current user likes the entry" do
-    let!(:entry) { FactoryGirl.create(:entry) }
-    scenario "page should return 'you know the feeling'", js: true do
+  context "entry with no likes" do
+    let!(:entry) { FactoryGirl.create(:entry, user: FactoryGirl.create(:user)) }
+    scenario "page should return 'you know the feeling'" do
       visit entries_path
-      page.should have_content "been there"
+      page.should have_content "Nobody knows the feeling."
       click_link "been there"
       page.should have_content "You know the feeling."
       click_link "been there"
@@ -27,10 +27,27 @@ feature "Users can like shared entries" do
     end
   end
 
-  context "when the current user and others like the entry" do
-    let!(:entry) { FactoryGirl.create(:entry, likes: 5) }
-    scenario "page should return 'you know the feeling'", js: true do
+  context "multiple entries" do
+    let!(:entry) { FactoryGirl.create(:entry, user: FactoryGirl.create(:user)) }
+    let!(:entry2) { FactoryGirl.create(:entry, user: FactoryGirl.create(:user)) }
+
+    scenario "liking an entry should not affect others", focus: true do
       visit entries_path
+      page.find("#entry_like_#{entry.id}").click
+      within("#entry_status_#{entry.id}") do
+        page.should have_content "You know the feeling."
+      end
+      within("#entry_status_#{entry2.id}") do
+        page.should_not have_content "You know the feeling."
+      end
+    end
+  end
+
+  context "entry with likes by others" do
+    let!(:entry) { FactoryGirl.create(:entry, likes: 5) }
+    scenario "page should return 'you and 5 others know the feeling'" do
+      visit entries_path
+      page.should have_content "5 others know the feeling."
       click_link "been there"
       page.should have_content "You and 5 others know the feeling."
       click_link "been there"

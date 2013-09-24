@@ -38,11 +38,20 @@
   </div>
   <div class="span3 offset1">
     <span class="pull-right">
-      <div class="like_status"><%= like_status_for(entry, current_user) %></div>
+      <div class="like_status" id="entry_status_<%= entry.id %>">
+        <%= like_status_for(entry, current_user) %>
+      </div>
     </span>
     <br /><br />
-    <% like_or_unlike_action = entry.liked?(current_user) ? unlike_entry_path(entry) : like_entry_path(entry) %>
-    <%= link_to content_tag(:i, nil, class: "icon-heart") + " been there", like_or_unlike_action, method: :put, remote: true, class: "btn btn-mini btn-inverse pull-right like_action" %>
+    <% if entry.liked?(current_user)
+         like_or_unlike_action = unlike_entry_path(entry)
+         css_class = "active"
+       else
+         like_or_unlike_action = like_entry_path(entry)
+         css_class = ""
+       end
+    %>
+    <%= link_to content_tag(:i, nil, class: "icon-heart") + " been there", like_or_unlike_action, method: :put, remote: true, class: "btn btn-mini btn-inverse pull-right like_action #{css_class}", id: "entry_like_#{entry.id}" %>
     <br /><br /><br />
     <% if entry.happiness_level && entry.happiness_level > 0 %>
     <p class="text-success">happiness</p>
