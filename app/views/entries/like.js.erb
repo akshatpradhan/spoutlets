@@ -1,0 +1,7 @@
+<% if current_user %>
+  <% @entry.like current_user %>
+  $("#entry_status_<%= @entry.id %>").html("<%= j(like_status_for(@entry, current_user)) %>");
+  $("#entry_like_<%= @entry.id %>").html("<%= j(like_button_for(@entry, current_user)) %>")
+<% else %>
+  $("#entry_message_<%= @entry.id %>").html("<%= j content_tag(:div, ('You need to ' + link_to('sign in', signin_path) + ' to like an entry.').html_safe, class: 'alert') %>");
+<% end -%>

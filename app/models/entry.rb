@@ -1,6 +1,7 @@
 class Entry
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Likeable
 
   field :title,            type: String
   field :content,          type: String
