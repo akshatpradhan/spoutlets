@@ -41,6 +41,7 @@
       <div class="like_status" id="entry_status_<%= entry.id %>">
         <%= like_status_for(entry, current_user) %>
       </div>
+      <div id="entry_message_<%= entry.id %>"></div>
     </span>
     <br /><br />
     <% if entry.liked?(current_user)
