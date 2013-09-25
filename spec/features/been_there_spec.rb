@@ -31,8 +31,15 @@ feature "Users can like shared entries" do
       page.should have_content "Nobody knows the feeling."
       click_link "been there"
       page.should have_content "You know the feeling."
-      click_link "been there"
+      click_link "un-been there"
       page.should have_content "Nobody knows the feeling."
+    end
+    scenario "been there button should become un-been there", js: true do
+      visit entries_path
+      click_link "been there"
+      page.should have_link "un-been there"
+      click_link "un-been there"
+      page.should have_link "been there"
     end
   end
 
@@ -42,7 +49,7 @@ feature "Users can like shared entries" do
 
     scenario "liking an entry should not affect others", js: true do
       visit entries_path
-      page.find("#entry_like_#{entry.id}").click
+      page.find("#entry_like_#{entry.id} a").click
       within("#entry_status_#{entry.id}") do
         page.should have_content "You know the feeling."
       end
@@ -59,7 +66,7 @@ feature "Users can like shared entries" do
       page.should have_content "5 others know the feeling."
       click_link "been there"
       page.should have_content "You and 5 others know the feeling."
-      click_link "been there"
+      click_link "un-been there"
       page.should have_content "5 others know the feeling."
     end
   end

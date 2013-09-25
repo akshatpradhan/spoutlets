@@ -1,3 +1,3 @@
 <% @entry.unlike current_user %>
 $("#entry_status_<%= @entry.id %>").html("<%= j(like_status_for(@entry, current_user)) %>");
-$("#entry_like_<%= @entry.id %>").attr("href", "<%= j(like_entry_path(@entry)) %>").toggleClass("active");
+$("#entry_like_<%= @entry.id %>").html("<%= j(like_button_for(@entry, current_user)) %>")
