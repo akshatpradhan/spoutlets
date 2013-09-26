@@ -24,6 +24,7 @@ group :test do
   gem "email_spec", "~> 1.4.0"
   gem "launchy", "~> 2.3.0"
   gem "capybara", "~> 2.1.0"
+  gem "selenium-webdriver"
   gem "cucumber-rails", "~> 1.3.1", :require => false
 end
 
@@ -50,3 +51,4 @@ gem "simple_form", ">= 2.0.4"
 gem "figaro", "~> 0.6"
 gem "devise", "~> 2.2.4"
 gem 'devise_invitable', '~> 1.1.8'
+gem 'mongoid-likeable', '~> 2.0.1'

@@ -126,12 +126,13 @@
   </div>
   <div class="span3 offset1">
     <span class="pull-right">
-      You and <b><%= rand(10) %></b> others know the feeling
+      <div class="like_status" id="entry_status_<%= entry.id %>">
+        <%= like_status_for(entry, current_user) %>
+        <div id="entry_message_<%= entry.id %>"></div>
+      </div>
     </span>
     <br /><br />
-    <button class="btn btn-mini btn-inverse pull-right" type="button">
-      <i class="icon-heart"></i> been there
-    </button>
+    <div class="like_action" id="entry_like_<%= entry.id %>"><%= like_button_for(entry, current_user) %></div>
     <br /><br /><br />
     <% if entry.happiness_level && entry.happiness_level > 0 %>
     <p class="text-success">happiness</p>

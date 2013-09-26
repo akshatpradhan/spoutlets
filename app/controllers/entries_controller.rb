@@ -12,6 +12,32 @@ class EntriesController < ApplicationController
     end
   end
 
+  def like
+    @entry = Entry.find(params[:id])
+    respond_to do |format|
+      format.html do
+        if current_user
+          @entry.like current_user
+          redirect_to entries_url
+        else
+          redirect_to root_url, notice: "You need to sign in to like an entry."
+        end
+      end
+      format.js
+    end
+  end
+
+  def unlike
+    @entry = Entry.find(params[:id])
+    respond_to do | format |
+      format.html do
+        @entry.unlike current_user
+        redirect_to entries_url
+      end
+      format.js
+    end
+  end
+
   # GET /entries/1
   # GET /entries/1.json
   def show

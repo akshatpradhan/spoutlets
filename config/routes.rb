@@ -4,7 +4,10 @@ Spoutlets::Application.routes.draw do
   resources :therapists
 
 
-  resources :entries
+  resources :entries do
+    put :like, on: :member
+    put :unlike, on: :member
+  end
 
 
   root :to => 'home#index'
