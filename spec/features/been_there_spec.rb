@@ -28,11 +28,11 @@ feature "Users can like shared entries" do
     let!(:entry) { FactoryGirl.create(:entry, user: FactoryGirl.create(:user)) }
     scenario "page should return 'you know the feeling'", js: true do
       visit entries_path
-      page.should have_content "Nobody knows the feeling."
+      page.should have_content "No one else knows the feeling."
       click_link "been there"
       page.should have_content "You know the feeling."
       click_link "un-been there"
-      page.should have_content "Nobody knows the feeling."
+      page.should have_content "No one else knows the feeling."
     end
     scenario "been there button should become un-been there", js: true do
       visit entries_path

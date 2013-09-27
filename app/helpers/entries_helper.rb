@@ -5,16 +5,24 @@ module EntriesHelper
   end
 
   def like_status_for(entry, user)
-    return "Nobody knows the feeling." if entry.likes == 0
+    return "No one else knows the feeling." if entry.likes == 0
     out = []
-    if entry.liked? user
-      out << "You"
-      out << "and" if entry.likes > 1
-      out << "<b>#{entry.likes - 1}</b> others" if entry.likes > 1
-    else
-      out << "<b>#{entry.likes}</b> others" if entry.likes > 1
+    if entry.likes == 1
+      if user == entry.user
+        out << "Another person knows"
+      else
+        out << "You know"
+      end
+    else#likes > 1
+      if user == entry.user
+        likes = entry.likes
+      else
+        likes = entry.likes - 1
+        out << "You and"
+      end
+      out << "<b>#{likes}</b> others know"
     end
-    out << "know the feeling."
+    out << "the feeling."
     out.join(" ").html_safe
   end
 
