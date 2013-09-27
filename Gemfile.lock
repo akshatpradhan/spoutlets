@@ -191,7 +191,6 @@ GEM
     multi_json (1.7.3)
     multipart-post (1.2.0)
     nokogiri (1.5.9)
-    oauth (0.4.7)
     oauth2 (0.8.1)
       faraday (~> 0.8)
       httpauth (~> 0.1)
@@ -203,11 +202,9 @@ GEM
       rack
     omniauth-facebook (1.4.1)
       omniauth-oauth2 (~> 1.1.0)
-    omniauth-linkedin (0.1.0)
-      omniauth-oauth (~> 1.0)
-    omniauth-oauth (1.0.1)
-      oauth
+    omniauth-linkedin-oauth2 (0.1.1)
       omniauth (~> 1.0)
+      omniauth-oauth2
     omniauth-oauth2 (1.1.1)
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
@@ -359,7 +356,7 @@ DEPENDENCIES
   mongoid-rspec (~> 1.8.2)
   omniauth (>= 1.1.1)
   omniauth-facebook
-  omniauth-linkedin
+  omniauth-linkedin-oauth2
   quiet_assets (~> 1.0.2)
   rails (= 3.2.13)
   rolify (>= 3.2.0)
