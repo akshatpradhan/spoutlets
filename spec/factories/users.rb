@@ -2,10 +2,9 @@ FactoryGirl.define do
 
   # user factory without associated entries
   factory :user do
-    provider "facebook"
-    uid "100004721472441"
-    name "Bob Raymond"
-    email "victory_records@hotmail.com"
+    sequence(:email) { |n| "user#{n}@example.com"}
+    password "dontellanyone"
+    password_confirmation { |user| user.password}
     # https://github.com/thoughtbot/factory_girl/blob/master/GETTING_STARTED.md#associations
     # user factory with associated posts
     factory :user_with_entries do
