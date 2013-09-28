@@ -7,13 +7,16 @@ Spoutlets::Application.routes.draw do
     get 'signout', to:  'devise/sessions#destroy', as: :signout
   end
 
-  resources :users, except: [:new, :create]
+  resources :users
+  get 'signup', to: "users#new", as: :signup
+
   resources :therapists
 
   resources :entries do
     put :like, on: :member
     put :unlike, on: :member
   end
+
 
   root to: 'home#index'
   match '/home' => 'home#index'

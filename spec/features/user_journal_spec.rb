@@ -8,16 +8,15 @@ feature "User wanting to view entries" do
   scenario "needs to register an account" do
     #NOTE: since a user has already signed in in the background section, I need to sign him out
     visit signout_path
-    visit new_user_registration_path
+    visit signup_path
     click_button "Register"
-    page.should have_content "problems"
+    page.should have_content "You must provide a valid email address to register!"
     fill_in "user_email", with: "test@test.com"
-    fill_in "user_password", with: "dontellanyone"
-    fill_in "user_password_confirmation", with: "dontellanyone"
     click_button "Register"
     page.should have_content "Welcome! You have signed up successfully."
     page.should have_content 'Shared entries'
     current_path.should == entries_path
+    ActionMailer::Base.deliveries.last.to.should include("test@test.com")
   end
 
   scenario "must be signed in" do
