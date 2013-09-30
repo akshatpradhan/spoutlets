@@ -35,8 +35,14 @@
             style: "margin-top: 10px;",
             method: :get  %>
     <% else %>
-      <li>
-        <%= link_to 'register or login', signin_path %>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle"
+        data-toggle="dropdown">register or login<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><%= link_to "for patients", signin_path %></li>
+          <li class="divider"></li>
+          <li><%= link_to "for therapists",  therapist_omniauth_authorize_path(:linkedin)%></li>
+        </ul>
       </li>
       <%= link_to raw('<i class="icon-plus"></i> log an entry'),
             new_entry_path,

@@ -112,6 +112,7 @@ Devise.setup do |config|
   # Flag that force a record to be valid before being actually invited
   # Default: false
   # config.validate_on_invite = true
+  config.invited_by_class_name = "User"
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -245,6 +246,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
+  config.omniauth :linkedin, ENV['OMNIAUTH_LINKEDIN_KEY'], ENV['OMNIAUTH_LINKEDIN_SECRET']
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

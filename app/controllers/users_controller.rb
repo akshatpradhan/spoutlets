@@ -1,8 +1,24 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: [:new, :create]
   load_and_authorize_resource
   def index
     @users = User.all
+  end
+
+  def new
+    @user = User.new
+  end
+
+  def create
+    generated_password = Devise.friendly_token.first(8)
+    user = User.create(email: params[:user][:email], password: generated_password)
+    if user.persisted?
+      UserMailer.welcome_email(user, generated_password).deliver
+      sign_in(:user, user)
+      redirect_to entries_path, notice: "Welcome! You have signed up successfully."
+    else
+      redirect_to signup_path, notice: "You must provide a valid email address to register!"
+    end
   end
 
   def edit
