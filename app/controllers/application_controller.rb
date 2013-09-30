@@ -2,7 +2,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   def after_sign_in_path_for(resource)
-    entries_path if resource.is_a?(User)
+    if resource.is_a?(User)
+      entries_path 
+    else
+      user_path(resource.invited_by)
+    end
   end
 
   def after_invite_path_for(resource)
@@ -10,11 +14,9 @@ class ApplicationController < ActionController::Base
   end
 
   protected
-    def authenticate_inviter!
-      authenticate_user!
-    end
-
-  private
+  def authenticate_inviter!
+    current_user
+  end
 
   def correct_user?
     @user = User.find(params[:id])
