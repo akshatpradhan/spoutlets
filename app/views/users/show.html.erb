@@ -46,7 +46,9 @@
   </div>
   <div class="span3 offset1">
     <span class="pull-right">
-      You and <b><%= rand(10) %></b> others know the feeling
+      <div class="like_status" id="entry_status_<%= entry.id %>">
+        <%= like_status_for(entry, current_user) %>
+      </div>
     </span>
     <br /><br />
     <div class="btn-toolbar pull-right">

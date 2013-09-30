@@ -16,31 +16,21 @@ feature "Users can like shared entries" do
   end
 
   context "with no user logged in" do
-    let!(:entry) { FactoryGirl.create(:entry, user: FactoryGirl.create(:user)) }
-    scenario "been there button should redirect to sign in page", js: true do
+    scenario "been there button should invite user to sign in", js: true do
+      FactoryGirl.create(:entry, user: FactoryGirl.create(:user))
       visit signout_path
       click_link "been there"
       page.should have_content "You need to sign in to like an entry."
     end
   end
 
-  context "entry with no likes" do
-    let!(:entry) { FactoryGirl.create(:entry, user: FactoryGirl.create(:user)) }
-    scenario "page should return 'you know the feeling'", js: true do
-      visit entries_path
-      page.should have_content "Nobody knows the feeling."
-      click_link "been there"
-      page.should have_content "You know the feeling."
-      click_link "un-been there"
-      page.should have_content "Nobody knows the feeling."
-    end
-    scenario "been there button should become un-been there", js: true do
-      visit entries_path
-      click_link "been there"
-      page.should have_link "un-been there"
-      click_link "un-been there"
-      page.should have_link "been there"
-    end
+  scenario "been there button should become un-been there", js: true do
+    FactoryGirl.create(:entry, user: FactoryGirl.create(:user))
+    visit entries_path
+    click_link "been there"
+    page.should have_link "un-been there"
+    click_link "un-been there"
+    page.should have_link "been there"
   end
 
   context "multiple entries" do
