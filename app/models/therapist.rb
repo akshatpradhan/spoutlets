@@ -3,7 +3,7 @@ class Therapist
   include Mongoid::Timestamps
   rolify
 
-  devise :invitable, :omniauthable
+  devise :invitable, :omniauthable, omniauth_providers: [:linkedin]
 
   field :provider,               type: String
   field :uid,                    type: String

@@ -3,16 +3,14 @@ Spoutlets::Application.routes.draw do
 
   resources :therapists
 
-
   resources :entries do
     put :like, on: :member
     put :unlike, on: :member
   end
 
-
   root :to => 'home#index'
   resources :users, :only => [:index, :show, :edit, :update ]
-  match '/auth/:provider/callback' => 'sessions#create'
+  match '/therapists/auth/:provider/callback', to: 'sessions#create'
   match '/signin' => 'sessions#new', :as => :signin
   match '/signout' => 'sessions#destroy', :as => :signout
   match '/auth/failure' => 'sessions#failure'
