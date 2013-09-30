@@ -1,5 +1,14 @@
 Spoutlets::Application.routes.draw do
+  devise_for :users
   devise_for :therapists
+
+  devise_scope :user do
+    get 'signin', to: 'devise/sessions#new', as: :signin
+    get 'signout', to:  'devise/sessions#destroy', as: :signout
+  end
+
+  resources :users
+  get 'signup', to: "users#new", as: :signup
 
   resources :therapists
 
@@ -8,11 +17,5 @@ Spoutlets::Application.routes.draw do
     put :unlike, on: :member
   end
 
-  root :to => 'home#index'
-  resources :users, :only => [:index, :show, :edit, :update ]
-  match '/therapists/auth/:provider/callback', to: 'sessions#create'
-  match '/signin' => 'sessions#new', :as => :signin
-  match '/signout' => 'sessions#destroy', :as => :signout
-  match '/auth/failure' => 'sessions#failure'
-  match '/home' => 'home#index'
+  root to: 'home#index'
 end
