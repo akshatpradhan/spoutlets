@@ -1,10 +1,9 @@
-<p id="notice"><%= notice %></p>
 <div class="row">
   <div class="span12">
-    <h2>How's it going?</h2>
+    <h2>How's it going, <%= @therapist.name %>?</h2>
     <p>Check out your client's journals below</p>
     <h4>Client Journals</h4>
-    <a href="">Bob Raymond</a>
+    <p><%= link_to @therapist.invited_by.name, user_path(@therapist.invited_by) %></p>
   </div>
 </div>
 

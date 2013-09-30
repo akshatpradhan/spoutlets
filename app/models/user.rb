@@ -12,6 +12,7 @@ class User
 
   ## Database authenticatable
   field :email,              type: String, default: ""
+  field :name,               type: String, default: ""
   field :encrypted_password, type: String, default: ""
 
   ## Recoverable
@@ -27,6 +28,7 @@ class User
   field :last_sign_in_at,    type: Time
   field :current_sign_in_ip, type: String
   field :last_sign_in_ip,    type: String
+  field :invitation_limit,       type: Integer
 
   ## Confirmable
   # field :confirmation_token,   :type => String
@@ -45,6 +47,7 @@ class User
   attr_accessible :role_ids, as: :admin
   attr_accessible :email, :password, :password_confirmation
 
+  has_one :therapist, foreign_key: "invited_by_id"
   has_many :entries
   # run 'rake db:mongoid:create_indexes' to create indexes
   index({ email: 1 }, { unique: true, background: true })

@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :entry do
-    content "i'm sick & its annoying bc i need to work but I'm tired as hell."
+    sequence(:content) {|n| "entry_content_#{n}"}
     category "just feeling off"
     published "true"
     happiness_level "1"

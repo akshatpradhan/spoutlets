@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
     if resource.is_a?(User)
       entries_path 
     else
-      user_path(resource.invited_by)
+      resource
     end
   end
 

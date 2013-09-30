@@ -112,6 +112,7 @@ Devise.setup do |config|
   # Flag that force a record to be valid before being actually invited
   # Default: false
   # config.validate_on_invite = true
+  config.invited_by_class_name = "User"
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without

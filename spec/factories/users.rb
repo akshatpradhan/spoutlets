@@ -2,7 +2,8 @@ FactoryGirl.define do
 
   # user factory without associated entries
   factory :user do
-    sequence(:email) { |n| "user#{n}@example.com"}
+    sequence(:name) {|n| "user#{n}"}
+    email {|user| "#{user.name}@example.com".downcase}
     password "dontellanyone"
     password_confirmation { |user| user.password}
     # https://github.com/thoughtbot/factory_girl/blob/master/GETTING_STARTED.md#associations
