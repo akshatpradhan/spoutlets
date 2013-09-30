@@ -16,6 +16,7 @@ group :development do
   gem "quiet_assets", "~> 1.0.2"
   gem "better_errors", "~> 0.9.0"
   gem "binding_of_caller", "~> 0.7.1"
+  gem "jazz_hands", "~> 0.5.0"
 end
 
 group :test do
@@ -24,14 +25,13 @@ group :test do
   gem "email_spec", "~> 1.4.0"
   gem "launchy", "~> 2.3.0"
   gem "capybara", "~> 2.1.0"
-  gem "selenium-webdriver"
+  gem "selenium-webdriver", "~> 2.35"
   gem "cucumber-rails", "~> 1.3.1", :require => false
 end
 
 group :development, :test do
   gem "rspec-rails", "~> 2.13.2"
   gem "factory_girl_rails", "~> 4.2.1"
-  gem "jazz_hands", "~> 0.5.0"
 end
 
 gem 'jquery-rails'

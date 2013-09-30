@@ -336,7 +336,7 @@ DEPENDENCIES
   rails (= 3.2.13)
   rolify (>= 3.2.0)
   rspec-rails (~> 2.13.2)
-  selenium-webdriver
+  selenium-webdriver (~> 2.35)
   simple_form (>= 2.0.4)
   therubyracer (>= 0.11.0)
   thin (>= 1.5.0)
