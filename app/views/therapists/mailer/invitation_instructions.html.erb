@@ -4,6 +4,12 @@
 <p>
   I’d like you to integrate my journal and mood chart into my treatment. I think it will help me a lot if you reviewed them for our next meeting.
 </p>
+<p>This is a sample of my journal :</p>
+<ul>
+  <% @resource.invited_by.entries.limit(5).each do |entry| %>
+    <li><%= entry.content %></li>
+  <% end -%>
+</ul>
 <p>
   Please accept my invitation to get secure access to my journal entries.
 </p>

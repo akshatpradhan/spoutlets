@@ -1,50 +1,45 @@
 require 'spec_helper'
 
-feature "User wanting to share entries with therapist" do
+feature "User sends an invitation to his therapist" do
 
-  let(:user) {FactoryGirl.create(:user)}
+  let(:user) {FactoryGirl.create(:user_with_entries, entries_count: 10)}
+  let(:therapist_email) {"therapist@example.com"}
 
   background do
     OmniAuth.config.test_mode = true
-    OmniAuth.config.mock_auth[:facebook] = {
-      'uid'  => '100004721472441',
-      'provider' => 'facebook',
-      'info' => {
-        'name' => 'Bob Raymond',
+    OmniAuth.config.mock_auth[:linkedin] = {
+      uid: '100004721472441',
+      provider: 'linkedin',
+      info: {
+        name: 'Sigmund Freud',
+        email: therapist_email
       }
     }
-    visit signin_path
-  end
-
-  scenario "invites a therapist" do
+    login user
     visit new_therapist_invitation_path
-    # NOTE => GET /therapists/invitation/new after signing in
-    fill_in 'email', with: 'therapist@example.com'
+    fill_in 'therapist_email', with: therapist_email
     click_button 'Give secure access!'
+  end
+
+  scenario "therapist receives a mail with his client last 5 journal entries" do
+    therapist = Therapist.where(email: therapist_email).first
     page.should have_content('An invitation email has been sent to therapist@example.com.')
-    page.should have_content(/your journal/i)
-    ActionMailer::Base.deliveries.last.to.should include("therapist@example.com")
-    # NOTE => Fake send an email after clicking button
-    # TODO Invitation email should be sent with inviter's last 5 journal entries.
-
+    page.should have_content(/your entries/i)
+    mail = ActionMailer::Base.deliveries.last
+    mail.to.should include therapist.email
+    (1..5).each do |n|
+      mail.body.encoded.should match(/entry_content_#{n}/)
+    end
   end
-end
 
-feature "Therapist wanting to access entries of inviter" do
-  scenario "creates a new account" do
-    therapist = Therapist.invite!(email: "therapist@example.com")
-    therapist.accept_invitation!
+  scenario "therapist accepts invitation and views his client journals" do
+    therapist = Therapist.where(email: therapist_email).first
     visit accept_therapist_invitation_path(invitation_token: therapist.invitation_token)
-    # NOTE => GET /therapists/invitation/accept?invitation_token=uqASMfBxmfXvzSxg9q4b
-    fill_in 'Name', with: 'Deana Finkel'
-    fill_in 'Password', with: 'Password1'
-    fill_in 'Password confirmation', with: 'Password1'
-    click_button 'Create account!'
-    page.should have_content(/Your password was set successfully. You are now signed in./i)
+    click_link "logout" #NOTE: testing signout and re signin with linkedin
+    page.should have_content(/signed out/i)
+    click_link "for therapists"
+    page.should have_content /Successfully authenticated from Linkedin account/i
     page.should have_content(/Client Journals/i)
-  end
-
-  scenario "views entries of inviter" do
-    pending "figure out cancan in ability.rb to enbale this"
+    #TODO: add cancan ability statements for therapist
   end
 end

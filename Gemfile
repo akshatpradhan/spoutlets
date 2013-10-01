@@ -26,6 +26,7 @@ group :test do
   gem "capybara", "~> 2.1.0"
   gem "selenium-webdriver"
   gem "cucumber-rails", "~> 1.3.1", :require => false
+  gem "guard-rspec"
 end
 
 group :development, :test do
@@ -45,6 +46,7 @@ gem "mongoid", "~> 3.0.1"
 gem "libv8", ">= 3.11.8"
 gem "omniauth", ">= 1.1.1"
 gem "omniauth-facebook"
+gem "omniauth-linkedin-oauth2"
 gem "cancan", ">= 1.6.8"
 gem "rolify", ">= 3.2.0"
 gem "simple_form", ">= 2.0.4"
