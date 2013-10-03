@@ -31,7 +31,7 @@ feature "User wanting to view entries" do
       FactoryGirl.create(:entry, user: user)
       visit entries_path
       page.should have_content(emotional_state)
-      visit home_path
+      visit root_path
       page.should have_content(emotional_state)
       visit user_path(user)
       page.should have_content(emotional_state)
@@ -41,7 +41,7 @@ feature "User wanting to view entries" do
       entry = FactoryGirl.create(:entry_without_emotional_state, user: user)
       visit entries_path
       page.should_not have_content(emotional_state)
-      visit home_path
+      visit root_path
       page.should_not have_content(emotional_state)
       visit user_path(user)
       page.should_not have_content(emotional_state)
