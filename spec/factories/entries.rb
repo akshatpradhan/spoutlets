@@ -2,13 +2,12 @@
 
 FactoryGirl.define do
   factory :entry do
-    content "i'm sick & its annoying bc i need to work but I'm tired as hell."
+    sequence(:content) {|n| "entry_content_#{n}"}
     category "just feeling off"
     published "true"
     happiness_level "1"
     anxiety_level "5"
     irritation_level "3"
-    user # add an associated user to the entry factory
     factory :entry_without_emotional_state do
       happiness_level "0"
       anxiety_level "0"
