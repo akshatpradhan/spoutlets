@@ -7,7 +7,14 @@
 <% end -%>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
-  <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+  <h6>
+    Don't have an account?
+  </h6>
+<%= link_to "Sign up", signup_path %><br />
+  <h6>
+    Forgot password?
+  </h6>
+  <%= link_to "Remind me!", new_password_path(resource_name) %><br />
 <% end -%>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
