@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!, except: [:new, :create]
   load_and_authorize_resource
+
+  helper_method :devise_mapping, :resource_name, :resource_class
+
   def index
     @users = User.all
   end
@@ -40,4 +43,17 @@ class UsersController < ApplicationController
     @entries = @user.entries
   end
 
+  private
+
+  def devise_mapping
+    Devise.mappings[:user]
+  end
+
+  def resource_name
+    devise_mapping.name
+  end
+
+  def resource_class
+    devise_mapping.to
+  end
 end
