@@ -9,10 +9,10 @@ feature "User wanting to view entries" do
     #NOTE: since a user has already signed in in the background section, I need to sign him out
     visit signout_path
     visit signup_path
-    click_button "Register"
+    click_button "Create your account"
     page.should have_content "You must provide a valid email address to register!"
     fill_in "user_email", with: "test@test.com"
-    click_button "Register"
+    click_button "Create your account"
     page.should have_content "Welcome! You have signed up successfully."
     page.should have_content 'Shared entries'
     current_path.should == entries_path
@@ -24,6 +24,20 @@ feature "User wanting to view entries" do
     page.should have_content "Signed in successfully."
     visit signout_path
     page.should have_content "Signed out successfully."
+  end
+
+  scenario "is offered to signup from the signin page" do
+    visit signout_path
+    visit signin_path
+    page.should have_content "Don't have an account?"
+    page.should have_link("Sign up")
+  end
+
+  scenario "is offered to signin from the signup page" do
+    visit signout_path
+    visit signup_path
+    page.should have_content "Already have an account?"
+    page.should have_link("Sign in")
   end
 
   %w(happiness anxiety irritation).each do |emotional_state|
