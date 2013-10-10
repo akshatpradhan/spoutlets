@@ -1,13 +1,29 @@
-<h2>Register</h2>
-
-<%= simple_form_for @user do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+<div class="row">
+  <div class="span11 offset1">
+    <h3>Register for an account</h3>
   </div>
+</div>
+<div class="row">
+  <div class="span3 offset2">
+  <%= simple_form_for @user do |f| %>
+    <%= f.error_notification %>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Register" %>
+    <div class="form-inputs">
+      <%= f.input :email, required: true, autofocus: true %>
+    </div>
+    <%= f.button :submit, "Create your account",
+        class: "btn-primary btn-large pull-right" %>
+  <% end %>
   </div>
-<% end %>
+  <div class="span2">
+  <br /><br /><br />
+  <h4 class="text-center">or</h4>
+  </div>
+  <div class="span5">
+    <div class="well">
+      <%= render "users/shared/links" %>
+    </div>
+  </div>
+</div>
+
+
