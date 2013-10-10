@@ -3,21 +3,16 @@
     Already have an account?
   </h6>
   <%= link_to "Sign in", new_session_path(resource_name) %><br />
+<% end -%>
+
+<%- if controller_name != 'users' %>
   <h6>
     Don't have an account?
   </h6>
   <%= link_to "Sign up", signup_path %><br />
-<% end -%>
-
-<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "Sign up", new_registration_path(resource_name) %><br />
 <% end -%>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
-  <h6>
-    Don't have an account?
-  </h6>
-  <%= link_to "Sign up", signup_path %><br />
   <h6>
     Forgot password?
   </h6>
