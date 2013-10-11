@@ -7,7 +7,7 @@
       <%= f.input_field :title, class: "span6" %>
     <% end %>
   </div>
-  <div class="span4 offset1">
+  <div class="span4">
     <%= f.input :published,
         as: :boolean,
         label: "Share with community",
@@ -66,9 +66,10 @@
     </div>
   </div>
 </div>
-<div class="form-actions">
-  <%= f.button :submit, "Log it!",
-      class: "btn-large btn-block btn-primary" %>
+<div class="row">
+  <div class="span12">
+    <%= f.button :submit, "Log it!",
+        class: "btn-large btn-block btn-primary" %>
+  </div>
 </div>
-
 <% end %>
