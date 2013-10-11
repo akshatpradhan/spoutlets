@@ -7,10 +7,10 @@
   <div class="span3 offset2">
   <%= simple_form_for @user do |f| %>
     <%= f.error_notification %>
-
-    <div class="form-inputs">
-      <%= f.input :email, required: true, autofocus: true %>
-    </div>
+    <%= f.input :email,
+        required: true,
+        autofocus: true,
+        input_html: { class: 'input-xlarge' } %>
     <%= f.button :submit, "Create your account",
         class: "btn-primary btn-large pull-right" %>
   <% end %>
@@ -19,7 +19,7 @@
   <br /><br /><br />
   <h4 class="text-center">or</h4>
   </div>
-  <div class="span5">
+  <div class="span4">
     <div class="well">
       <%= render "users/shared/links" %>
     </div>

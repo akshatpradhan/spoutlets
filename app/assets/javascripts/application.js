@@ -11,13 +11,15 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery.ui.button
 //= require jquery.ui.datepicker
 //= require jquery.ui.slider
 //= require jquery.ui.spinner
 //= require jquery.ui.tooltip
 //= require jquery.ui.effect
 //= require jquery_ujs
-//= require bootstrap-slider
 //= require twitter/bootstrap
+//= require flatuipro
 //= require highcharts/highcharts
+//= require bootstrap-slider
 //= require_tree .
