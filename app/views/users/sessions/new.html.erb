@@ -5,11 +5,16 @@
 </div>
 <div class="row">
   <div class="span3 offset2">
-    <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-      <%= f.input :email, :required => false, :autofocus => true %>
-      <%= f.input :password, :required => false %>
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= f.input :email,
+          required: false,
+          autofocus: true,
+          input_html: { class: 'input-xlarge' } %>
+      <%= f.input :password,
+          required: false,
+          input_html: { class: 'input-xlarge' } %>
       <%= f.input :remember_me,
-          input_html: { data: {toggle: :checkbox} },
+          input_html: { data: { toggle: :checkbox } },
           as: :boolean if devise_mapping.rememberable? %>
       <%= f.button :submit, "Login",
           class: "btn-primary btn-large pull-right" %>
@@ -25,4 +30,3 @@
     </div>
   </div>
 </div>
-
