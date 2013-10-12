@@ -5,24 +5,21 @@
 </div>
 <div class="row">
   <div class="span3 offset2">
-  <%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+  <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
     <%= f.error_notification %>
-
-    <div class="form-inputs">
-      <%= f.input :email, :required => true, :autofocus => true %>
-    </div>
-
-
+    <%= f.input :email,
+        required: true,
+        autofocus: true,
+        input_html: { class: 'input-xlarge' } %>
     <%= f.button :submit, "Reset password",
         class: "btn-primary btn-large pull-right" %>
-
   <% end %>
   </div>
   <div class="span2">
   <br /><br /><br />
   <h4 class="text-center">or</h4>
   </div>
-  <div class="span5">
+  <div class="span4">
     <div class="well">
       <%= render "users/shared/links" %>
     </div>
